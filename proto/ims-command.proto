@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package ims_command;
+
+option go_package = "./";
+
+service ImsCommandService {
+  rpc setVenue(setVenueRequest) returns (setVenueResponse) {} // insertVenue
+  rpc patchVenue(patchVenueRequest) returns (patchVenueResponse) {} // updateVenue
+  rpc delVenue(delVenueRequest) returns (delVenueResponse) {} // deleteVenue
+}
+
+message setVenueRequest {
+  int32 country_id = 1;
+  int32 city_id = 2;
+  int32 state_id = 3;
+  string event_name = 4;
+  string event_code = 5;
+  string name = 6;
+  string description = 7;
+  string comment = 8;
+}
+
+message setVenueResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string data = 3;
+}
+
+message patchVenueRequest {
+  string id = 1;
+  int32 country_id = 2;
+  int32 city_id = 3;
+  int32 state_id = 4;
+  string event_name = 5;
+  string event_code = 6;
+  string name = 7;
+  string description = 8;
+  string comment = 9;
+}
+
+message patchVenueResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string data = 3;
+}
+
+message delVenueRequest {
+  string id = 1;
+}
+
+message delVenueResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string data = 3;
+}
