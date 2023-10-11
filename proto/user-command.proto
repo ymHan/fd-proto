@@ -1,78 +1,33 @@
 syntax = "proto3";
 
-package user_command;
+package userCommand;
 
-option go_package = "./";
+option go_package="./";
 
 service UserCommandService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
   rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
-  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {} // 사용자 삭제(슈퍼어드민만 가진다)
-  rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordResponse) {} //비밀번호 변경
-  rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {} //권한변경
 }
 
-//권한 변경
-message UpdateRoleRequest {
-  string email = 1;
-  string role = 2;
-}
-
-//권한 변경 성공시 응답
-message UpdateRoleResponse {
-  int32 status = 1;
-  repeated string error = 2;
-}
-
-//비밀번호 변경
-message UpdatePasswordRequest {
-  string email = 1;
-  string password = 2;
-}
-
-//비밀번호 변경 성공시 응답
-message UpdatePasswordResponse {
-  int32 status = 1;
-  repeated string error = 2;
-}
-
-//사용자 등록
 message CreateUserRequest {
   string email = 1;
   string username = 2;
   string password = 3;
-  string role = 4;
-  string created_at = 5;
-  string updated_at = 6;
+  string created_at = 4;
 }
 
-//사용자 등록 성공시 응답
 message CreateUserResponse {
   int32 status = 1;
   repeated string error = 2;
-  string data = 3;
 }
 
-//
 message UpdateUserRequest {
   string email = 1;
   string username = 2;
   string password = 3;
-  string updated_at = 4;
 }
 
 message UpdateUserResponse {
   int32 status = 1;
   repeated string error = 2;
-  string data = 3;
 }
-
-message DeleteUserRequest {
-  string id = 1;
-}
-
-message DeleteUserResponse {
-  int32 status = 1;
-  repeated string error = 2;
-}
-

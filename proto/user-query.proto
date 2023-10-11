@@ -1,42 +1,13 @@
 syntax = "proto3";
 
-package user_query;
+package userQuery;
 
 option go_package = "./";
 
 service UserQueryService {
   rpc UserLogin (UserLoginRequest) returns (UserLoginResponse) {}
-  rpc Validate (ValidateRequest) returns (ValidateResponse) {}
-  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
-  rpc GetUsers (GetUsersRequest) returns (GetUsersResponse) {}
-}
-//사용자 정보를 가져온다
-message GetUserRequest {
-  string email = 1;
-}
-
-message GetUserResponse {
-  int32 status = 1;
-  user user = 2;
-  repeated string error = 3;
-}
-
-message GetUsersRequest {
-  int32 page = 1;
-  int32 limit = 2;
-}
-
-message GetUsersResponse {
-  int32 status = 1;
-  repeated user users = 2;
-  repeated string error = 3;
-}
-
-message user {
-  string email = 1;
-  string username = 2;
-  string created_at = 3;
-  string updated_at = 4;
+  // rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+  // rpc GetUsers (GetUsersRequest) returns (GetUsersResponse) {}
 }
 
 message UserLoginRequest {
@@ -45,18 +16,7 @@ message UserLoginRequest {
 }
 
 message UserLoginResponse {
-  int32 status = 1;
-  string token = 2;
+  string email = 1;
+  string username = 2;
   repeated string error = 3;
-}
-
-message ValidateRequest {
-  string token = 1;
-}
-
-message ValidateResponse {
-  int32 status = 1;
-  string email = 2;
-  string username = 3;
-  repeated string error = 4;
 }

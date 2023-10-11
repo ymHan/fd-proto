@@ -1,50 +1,5 @@
 syntax = "proto3";
 
-package ims_query;
+package imsQuery;
 
-option go_package = "./";
-
-service ImsQueryService {
-  rpc getVenue(getVenueRequest) returns (getVenueResponse) {} // get venue by id
-  rpc getVenueList(getVenueListRequest) returns (getVenueListResponse) {} // get venue list by filter
-}
-
-message Venue {
-  string id = 1;
-  int32 country_id = 2;
-  int32 city_id = 3;
-  int32 state_id = 4;
-  string event_name = 6;
-  string event_code = 7;
-  string name = 8;
-  string description = 9;
-  string comment = 10;
-  string updated_at = 11;
-  string created_at = 12;
-}
-
-message getVenueRequest {
-  string id = 1;
-}
-
-message getVenueResponse {
-  Venue venue = 12;
-  int32 status = 13;
-  repeated string error = 14;
-}
-
-message getVenueListRequest {
-  int32 page = 1;
-  int32 pageSize = 2;
-  string orderBy = 3;
-  string order = 4;
-}
-
-message getVenueListResponse {
-  repeated Venue venues = 12;
-  int32 status = 13;
-  int32 total = 14;
-  int32 page = 15;
-  int32 pageSize = 16;
-  repeated string error = 17;
-}
+option go_package="./";

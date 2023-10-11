@@ -1,5 +1,5 @@
 syntax = "proto3";
 
-package imsCommand;
+package sportsCommand;
 
 option go_package="./";

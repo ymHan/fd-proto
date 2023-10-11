@@ -1,5 +1,5 @@
 syntax = "proto3";
 
-package imsCommand;
+package cmsQuery;
 
 option go_package="./";
