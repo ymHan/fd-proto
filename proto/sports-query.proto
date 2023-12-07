@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-package sportsQuery;
-
-option go_package="./";
