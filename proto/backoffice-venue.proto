@@ -66,7 +66,7 @@ message CreateVenueRequest {
   string  description = 6; // 장소설명
   google.protobuf.Timestamp cratedAt = 7;
   google.protobuf.Timestamp updatedAt = 8;
-  optional google.protobuf.Timestamp deletedAt = 9;
+  google.protobuf.Timestamp deletedAt = 9;
 }
 
 message CreateVenueResponse {
