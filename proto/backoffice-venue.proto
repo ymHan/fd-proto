@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package backoffice_venue;
+
+import "google/protobuf/timestamp.proto";
+
+service BOVenueService {
+  rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse) {} // 거래처 정보 입력
+  rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse) {}       // 거래처 소속 사용자 정보 입력
+  rpc CreateVenue(CreateVenueRequest) returns (CreateVenueResponse) {}          // 베뉴 정보 입력
+  rpc CreateSector(CreateSectorRequest) returns (CreateSectorResponse) {}       // 베뉴 구역 정보 입력
+}
+
+/********************************************************************************
+  * 구역 정보 입력
+*/
+message CreateSectorRequest {
+  string  sectorId    = 1; // 구역코드번호
+  string  venueId     = 2; // 장소코드번호
+  string  name        = 3; // 구역명
+  string  description = 4; // 구역설명
+}
+
+message CreateSectorResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+/********************************************************************************
+  * 사용자
+********************************************************************************/
+message CreateMemberRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+  int32 roles = 4;
+}
+
+message CreateMemberResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+/********************************************************************************
+  * 거래처
+********************************************************************************/
+message CreateCustomerRequest {
+  string  id          = 1; // 거래처코드번호
+  string  name        = 2; // 거래처명
+  string  description = 3; // 거래처설명
+  google.protobuf.Timestamp cratedAt = 4;
+  google.protobuf.Timestamp updatedAt = 5;
+}
+
+message CreateCustomerResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+message CreateVenueRequest {
+  string  venueId     = 1; // 장소코드번호
+  int32   countryId   = 2; // 국가코드번호
+  int32   stateId     = 3; // 주코드번호
+  int32   cityId      = 4; // 도시코드번호
+  string  name        = 5; // 장소명
+  string  description = 6; // 장소설명
+  google.protobuf.Timestamp cratedAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
+  optional google.protobuf.Timestamp deletedAt = 9;
+}
+
+message CreateVenueResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
