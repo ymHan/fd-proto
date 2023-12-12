@@ -1,19 +1,33 @@
 syntax = "proto3";
 
-package backoffice_venue;
+package backoffice;
 
-import "google/protobuf/timestamp.proto";
-
-service BOVenueService {
+// 거래처 관련 서비스
+service BO_Customer_Service {
   rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse) {} // 거래처 정보 입력
+  // 거래처 정보 수정
+  // 거래처 정보 삭제
+
+  // 거래처 정보 조회
+  // 거래처 정보 목록 조회
+}
+
+// 거래처 소속 사용자 서비스
+service BO_Member_Service {
   rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse) {}       // 거래처 소속 사용자 정보 입력
+  // 거래처 소속 사용자 정보 수정
+  // 거래처 소속 사용자 정보 삭제
+
+  // 거래처 소속 사용자 정보 조회
+  // 거래처 소속 사용자 정보 목록 조회
+}
+
+// 베뉴 관련 서비스
+service BO_Venue_Service {
   rpc CreateVenue(CreateVenueRequest) returns (CreateVenueResponse) {}          // 베뉴 정보 입력
   rpc CreateSector(CreateSectorRequest) returns (CreateSectorResponse) {}       // 베뉴 구역 정보 입력
 }
 
-/********************************************************************************
-  * 구역 정보 입력
-*/
 message CreateSectorRequest {
   string  sectorId    = 1; // 구역코드번호
   string  venueId     = 2; // 장소코드번호
@@ -48,8 +62,6 @@ message CreateCustomerRequest {
   string  id          = 1; // 거래처코드번호
   string  name        = 2; // 거래처명
   string  description = 3; // 거래처설명
-  google.protobuf.Timestamp cratedAt = 4;
-  google.protobuf.Timestamp updatedAt = 5;
 }
 
 message CreateCustomerResponse {
@@ -64,9 +76,6 @@ message CreateVenueRequest {
   int32   cityId      = 4; // 도시코드번호
   string  name        = 5; // 장소명
   string  description = 6; // 장소설명
-  google.protobuf.Timestamp cratedAt = 7;
-  google.protobuf.Timestamp updatedAt = 8;
-  google.protobuf.Timestamp deletedAt = 9;
 }
 
 message CreateVenueResponse {
