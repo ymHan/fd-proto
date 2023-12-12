@@ -10,6 +10,31 @@ service MemberService {
   rpc Delete(DeleteRequest) returns (DeleteResponse) {} // 멤버 탈퇴 / 삭제 등
   rpc SignIn(SignInRequest) returns (SignInResponse) {} // 멤버 로그인
   rpc Validate(ValidateRequest) returns (ValidateResponse) {} // 로그인 유지
+
+  rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {} // 멤버 권한 업데이트 //관리자용
+
+  rpc AddUser(AddUserRequest) returns (AddUserResponse) {} // 관리자용가 멤버 추가
+
+}
+/*
+
+*/
+message AddUserRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+  int32 roles = 4;
+}
+
+
+message UpdateRoleRequest {
+  int32 userId = 1;
+  int32 rolesId = 2;
+}
+
+message UpdateRoleResponse {
+  int32 status = 1;
+  repeated string error = 2;
 }
 
 message SignUpRequest {
@@ -25,7 +50,8 @@ message SignUpResponse {
 }
 
 message UpdateRequest {
-  int32 userId = 1;
+  int32 id = 1;
+
 }
 
 message UpdateResponse {
