@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package member;
 
-option go_package="./";
-
 service MemberService {
   rpc SignUp(SignUpRequest) returns (SignUpResponse) {} // 멤버 등록
   rpc Update(UpdateRequest) returns (UpdateResponse) {} // 멤버 정보 업데이트
@@ -12,20 +10,7 @@ service MemberService {
   rpc Validate(ValidateRequest) returns (ValidateResponse) {} // 로그인 유지
 
   rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {} // 멤버 권한 업데이트 //관리자용
-
-  rpc AddUser(AddUserRequest) returns (AddUserResponse) {} // 관리자용가 멤버 추가
-
 }
-/*
-
-*/
-message AddUserRequest {
-  string name = 1;
-  string email = 2;
-  string password = 3;
-  int32 roles = 4;
-}
-
 
 message UpdateRoleRequest {
   int32 userId = 1;
