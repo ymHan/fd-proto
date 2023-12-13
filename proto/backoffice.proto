@@ -2,15 +2,96 @@ syntax = "proto3";
 
 package backoffice;
 
-// 거래처 관련 서비스
+/********************************************************************************
+  거래처 관련 시작
+ ********************************************************************************/
 service BO_Customer_Service {
   rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse) {} // 거래처 정보 입력
-  // 거래처 정보 수정
-  // 거래처 정보 삭제
-
-  // 거래처 정보 조회
-  // 거래처 정보 목록 조회
+  // rpc UpdateCustomer(UpdateCustomerRequest) returns (UpdateCustomerResponse) {} // 거래처 정보 수정
+  // rpc DeleteCustomer(DeleteCustomerRequest) returns (DeleteCustomerResponse) {} // 거래처 정보 삭제
+  rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse) {} // 거래처 정보 조회
+  rpc ListCustomer(ListCustomerRequest) returns (ListCustomerResponse) {} //거래처 정보 목록 조회
 }
+
+//거래처 테이블
+message Customer {
+  string  customerId = 1; // 거래처코드번호
+  string  name = 2; // 거래처명
+  string  description = 3; // 거래처설명
+  string  customerCode = 4; // 거래처코드
+  string  createdAt = 5; // 생성일시
+}
+
+// 거래처 입력
+message CreateCustomerRequest {
+  string  name        = 1; // 거래처명
+  string  description = 2; // 거래처설명
+}
+
+// 거래처 입력 결과
+message CreateCustomerResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+// 거래처 정보 수정
+message GetCustomerRequest {
+  string customerId = 1; // 거래처코드번호
+  string name = 2;
+  string description = 3;
+}
+
+message GetCustomerResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  Customer customer = 3;
+}
+
+message ListCustomerRequest {
+  int32 page = 1;
+  int32 pagesize = 2;
+  string sort = 3;
+}
+
+message ListCustomerResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  repeated Customer customers = 3;
+}
+/********************************************************************************
+  거래처 관련 끝
+ ********************************************************************************/
+
+/********************************************************************************
+  거래처 소속 - 베뉴 정보 시작
+ ********************************************************************************/
+service BO_Venue_Service {
+  rpc CreateVenue(CreateVenueRequest) returns (CreateVenueResponse) {}          // 베뉴 정보 입력
+  rpc CreateSector(CreateSectorRequest) returns (CreateSectorResponse) {}       // 베뉴 구역 정보 입력
+}
+
+message Venue {
+  string  CustomerId  = 1; // 거래처코드번호
+  string  venueId     = 2; // 장소코드번호
+  string  sportsId    = 3; // 종목코드번호
+  int32   countryId   = 4; // 국가코드번호
+  int32   stateId     = 5; // 주코드번호
+  int32   cityId      = 6; // 도시코드번호
+  string  name        = 7; // 장소명
+  string  description = 8; // 장소설명
+}
+
+message CreateVenueRequest {
+  Venue venue = 1;
+}
+
+message CreateVenueResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+/********************************************************************************
+  거래처 소속 - 베뉴 정보 끝
+ ********************************************************************************/
 
 // 거래처 소속 사용자 서비스
 service BO_Member_Service {
@@ -22,11 +103,6 @@ service BO_Member_Service {
   // 거래처 소속 사용자 정보 목록 조회
 }
 
-// 베뉴 관련 서비스
-service BO_Venue_Service {
-  rpc CreateVenue(CreateVenueRequest) returns (CreateVenueResponse) {}          // 베뉴 정보 입력
-  rpc CreateSector(CreateSectorRequest) returns (CreateSectorResponse) {}       // 베뉴 구역 정보 입력
-}
 
 message CreateSectorRequest {
   string  sectorId    = 1; // 구역코드번호
@@ -56,29 +132,8 @@ message CreateMemberResponse {
 }
 
 /********************************************************************************
-  * 거래처
-********************************************************************************/
-message CreateCustomerRequest {
-  string  id          = 1; // 거래처코드번호
-  string  name        = 2; // 거래처명
-  string  description = 3; // 거래처설명
-}
+  거래처
+ *******************************************************************************/
 
-message CreateCustomerResponse {
-  int32 status = 1;
-  repeated string error = 2;
-}
 
-message CreateVenueRequest {
-  string  venueId     = 1; // 장소코드번호
-  int32   countryId   = 2; // 국가코드번호
-  int32   stateId     = 3; // 주코드번호
-  int32   cityId      = 4; // 도시코드번호
-  string  name        = 5; // 장소명
-  string  description = 6; // 장소설명
-}
 
-message CreateVenueResponse {
-  int32 status = 1;
-  repeated string error = 2;
-}
