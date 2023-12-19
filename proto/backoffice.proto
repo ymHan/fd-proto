@@ -68,7 +68,10 @@ message ListCustomerRequest {
 message ListCustomerResponse {
   int32 status                = 1; // 상태 정보
   int32 totalCount            = 2; // 전체 Customer 수
-  repeated Customer customers = 3; // Customer 목록
+  message Result {
+    repeated Customer customers = 1; // Customer 목록
+  }
+  Result result              = 3; // 결과 정보
   repeated string error       = 4; // 에러 정보
 }
 
