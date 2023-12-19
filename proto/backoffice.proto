@@ -46,7 +46,10 @@ message GetCustomerRequest {
 // 2-1. 거래처 정보 가져오기 결과
 message GetCustomerResponse {
   int32 status          = 1;
-  Customer customer     = 2;
+  message Result {
+    Customer customer   = 1;
+  }
+  Result result         = 2;
   repeated string error = 3;
 
 }
