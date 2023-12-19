@@ -34,8 +34,8 @@ message CreateCustomerResponse {
   message Result {
     string id = 1;
   }
-  Result result         = 2;
-  repeated string error = 3;
+  repeated string error = 2;
+  Result result         = 3;
 }
 
 // 2. 거래처 정보 가져오기 요청
