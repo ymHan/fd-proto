@@ -24,9 +24,8 @@ message Customer {
 
 // 1. 거래처 등록
 message CreateCustomerRequest {
-  string id          = 1; // 거래처코드번호
-  string name        = 2; // 거래처명
-  string description = 3; // 거래처설명
+  string name        = 1; // 거래처명
+  string description = 2; // 거래처설명
 }
 
 // 1-1. 거래처 등록 결과
