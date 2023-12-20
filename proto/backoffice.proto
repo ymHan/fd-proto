@@ -198,7 +198,7 @@ message CreateVenueResponse {
     string id = 1;
   }
   repeated string error = 2;
-  Result result = 3
+  Result result = 3;
 }
 /********************************************************************************
   거래처 소속 - 베뉴 정보 끝
