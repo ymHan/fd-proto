@@ -286,7 +286,11 @@ message CreateSectorRequest {
 
 message CreateSectorResponse {
   int32 status = 1;
+  message Result {
+    string id = 1;
+  }
   repeated string error = 2;
+  Result result = 3;
 }
 
 /********************************************************************************
