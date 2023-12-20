@@ -81,7 +81,7 @@ message ListCustomerResponse {
   message Result {
     repeated Customer customers = 1; // Customer 목록
   }
-  Result result              = 5; // 결과 정보
+  Result result               = 5; // 결과 정보
   repeated string error       = 6; // 에러 정보
 }
 
@@ -270,14 +270,18 @@ message DeleteSectorResponse {
 }
 
 message Sector {
-  string  customerId  = 1; // 구역코드번호
-  string  venueId     = 2; // 장소코드번호
-  string  name        = 3; // 구역명
-  string  description = 4; // 구역설명
+  string  id          = 1; // 구역코드번호
+  string  customerId  = 2; // 고객코드번호
+  string  venueId     = 3; // 장소코드번호
+  string  name        = 4; // 구역명
+  string  description = 5; // 구역설명
 }
 
 message CreateSectorRequest {
-  Sector sector = 1;
+  string  customerId  = 1; // 고객코드번호
+  string  venueId     = 2; // 장소코드번호
+  string  name        = 3; // 구역명
+  string  description = 4; // 구역설명
 }
 
 message CreateSectorResponse {
