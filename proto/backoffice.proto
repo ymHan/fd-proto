@@ -183,7 +183,7 @@ message Venue {
 }
 
 message CreateVenueRequest {
-  string  CustomerId  = 1; // 거래처코드번호
+  string  customerId  = 1; // 거래처코드번호
   string  sportsId    = 2; // 종목코드번호
   int32   countryId   = 3; // 국가코드번호
   int32   stateId     = 4; // 주코드번호
