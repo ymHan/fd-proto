@@ -172,6 +172,17 @@ message DeleteVenueResponse {
 }
 
 message Venue {
+  string id           = 1; // 장소코드번호
+  string  CustomerId  = 2; // 거래처코드번호
+  string  sportsId    = 3; // 종목코드번호
+  int32   countryId   = 4; // 국가코드번호
+  int32   stateId     = 5; // 주코드번호
+  int32   cityId      = 6; // 도시코드번호
+  string  name        = 7; // 장소명
+  string  description = 8; // 장소설명
+}
+
+message CreateVenueRequest {
   string  CustomerId  = 1; // 거래처코드번호
   string  sportsId    = 2; // 종목코드번호
   int32   countryId   = 3; // 국가코드번호
@@ -181,14 +192,13 @@ message Venue {
   string  description = 7; // 장소설명
 }
 
-message CreateVenueRequest {
-  Venue venue = 1;
-}
-
 message CreateVenueResponse {
   int32 status = 1;
-  string venueId = 2;
-  repeated string error = 3;
+  message Result {
+    string id = 1;
+  }
+  repeated string error = 2;
+  Result result = 3
 }
 /********************************************************************************
   거래처 소속 - 베뉴 정보 끝
