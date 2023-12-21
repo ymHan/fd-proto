@@ -252,13 +252,7 @@ message ListSectorRequest {
 message GetSectorResponse {
   int32 status = 1;
   message Result {
-    string  id          = 1; // 구역코드번호
-    string  customerId  = 2; // 고객코드번호
-    string  venueId     = 3; // 장소코드번호
-    string  name        = 4; // 구역명
-    string  description = 5; // 구역설명
-    string  sportsId    = 6; // 종목코드번호
-    string  fId         = 7; // 구장코드번호
+    Sector2 sector = 1;
   }
   Result result = 2;
   repeated string error = 3;
@@ -283,6 +277,16 @@ message Sector {
   string  venueId     = 3; // 장소코드번호
   string  name        = 4; // 구역명
   string  description = 5; // 구역설명
+}
+
+message Sector2 {
+  string  id          = 1; // 구역코드번호
+  string  customerId  = 2; // 고객코드번호
+  string  venueId     = 3; // 장소코드번호
+  string  name        = 4; // 구역명
+  string  description = 5; // 구역설명
+  string  sportsId    = 6; // 종목코드번호
+  string  fId         = 7; // 구장코드번호
 }
 
 message CreateSectorRequest {
