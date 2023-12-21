@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package "video";
+
+service myVideoService {
+  rpc RecordVideo (RecordVideoRequest) returns (RecordVideoResponse) {}
+}
+
+message RecordVideoRequest {
+  string videoName = 1;
+}
