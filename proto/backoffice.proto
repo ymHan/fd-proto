@@ -255,8 +255,7 @@ message GetSectorResponse {
     Sector sector = 1;
   }
   Result result = 2;
-  string fId = 3;
-  repeated string error = 4;
+  repeated string error = 3;
 }
 
 message GetSectorRequest {
