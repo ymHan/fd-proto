@@ -255,7 +255,9 @@ message GetSectorResponse {
     Sector sector = 1;
   }
   Result result = 2;
-  repeated string error = 3;
+  string sportsId = 3;
+  string fId = 4;
+  repeated string error = 5;
 }
 
 message GetSectorRequest {
