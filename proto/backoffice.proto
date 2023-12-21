@@ -253,11 +253,11 @@ message GetSectorResponse {
   int32 status = 1;
   message Result {
     Sector sector = 1;
-    string sportsId = 2;
-    string fId = 3;
   }
   Result result = 2;
-  repeated string error = 3;
+  string sportsId = 3;
+  string fId = 4;
+  repeated string error = 5;
 }
 
 message GetSectorRequest {
