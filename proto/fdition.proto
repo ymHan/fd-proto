@@ -3,14 +3,14 @@ syntax = "proto3";
 package fdition;
 
 service FditionService {
-  rpc InitBasic(InitBasicAdd) returns (InitBasicAddResponse) {} // 최초 등록 기본 정보
+  rpc InitBasic(InitBasicRequest) returns (InitBasicResponse) {} // 최초 등록 기본 정보
 }
 
 message DATA {
   string fdition = 1;
 }
 
-message InitBasicAddResponse {
+message InitBasicResponse {
   string status         = 1;
   string message        = 2;
   DATA data             = 3;
@@ -50,7 +50,7 @@ message SWITCH {
   string model      = 4;
 }
 
-message InitBasicAdd { //Sector에서 위치 정보를 갱신한다.
+message InitBasicRequest { //Sector에서 위치 정보를 갱신한다.
   string node_id          = 1;
   string type             = 2;
   string command          = 3;
@@ -60,5 +60,4 @@ message InitBasicAdd { //Sector에서 위치 정보를 갱신한다.
   repeated CAMERA camera  = 7;
   repeated string gimbal  = 8;
   repeated SWITCH switch  = 9;
-
 }
