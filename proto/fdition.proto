@@ -4,87 +4,61 @@ package fdition;
 
 service FditionService {
   rpc InitBasic(InitBasicAdd) returns (InitBasicAddResponse) {} // 최초 등록 기본 정보
-  rpc InitPcInfo(InitPcInfoAdd) returns (InitPcInfoAddResponse) {} // 최초 등록 PC
-  rpc InitSWInfo(InitSWInfoAdd) returns (InitSWInfoAddResponse) {} // 최초 등록 소프트웨어
-  rpc InitCameraInfo(InitCameraInfoAdd) returns (InitCameraInfoAddResponse) {} // 최초 등록 카메라
-  rpc InitGimbalInfo(InitGimbalInfoAdd) returns (InitGimbalInfoAddResponse) {} // 최초 등록 짐벌
-  rpc InitSwitchInfo(InitSwitchInfoAdd) returns (InitSwitchInfoAddResponse) {} // 최초 등록 스위치 정보
+}
+
+message DATA {
+  string fdition = 1;
 }
 
 message InitBasicAddResponse {
-  string status = 1;
-  repeated string message = 2;
+  string status         = 1;
+  string message        = 2;
+  DATA data             = 3;
+  repeated string error = 4;
 }
 
-message InitPcInfoAddResponse {
-  string status = 1;
-  repeated string message = 2;
+message Location {
+  string latitude   = 1;
+  string longitude  = 2;
 }
 
-message InitSWInfoAddResponse {
-  string status = 1;
-  repeated string message = 2;
+message PC {
+  string id         = 1;
+  string ip         = 2;
+  string os         = 3;
+  string gpu        = 4;
+  string gpu_driver = 5;
 }
 
-message InitCameraInfoAddResponse {
-  string status = 1;
-  repeated string message = 2;
+message SW {
+  string ip         = 1;
+  string name       = 2;
+  string ver        = 3;
 }
 
-message InitGimbalInfoAddResponse {
-  string status = 1;
-  repeated string message = 2;
+message CAMERA {
+  string id         = 1;
+  string ip         = 2;
+  string model      = 3;
+  string fw         = 4;
 }
 
-message InitSwitchInfoAddResponse {
-  string status = 1;
-  repeated string message = 2;
+message SWITCH {
+  string id         = 1;
+  string ip         = 2;
+  string brand      = 3;
+  string model      = 4;
 }
 
 message InitBasicAdd { //Sector에서 위치 정보를 갱신한다.
-  string id         = 1;
-  string latitude   = 2;
-  string longitude  = 3;
-}
+  string node_id          = 1;
+  string type             = 2;
+  string command          = 3;
+  Location location       = 4;
+  repeated PC pc          = 5;
+  repeated SW sw          = 6;
+  repeated CAMERA camera  = 7;
+  repeated string gimbal  = 8;
+  repeated SWITCH switch  = 9;
 
-message InitPcInfoAdd {
-  string pcId       = 1;
-  string fditionId  = 2;
-  string id         = 3;
-  string ip         = 4;
-  string os         = 5;
-  string gpu        = 6;
-  string gpu_driver = 7;
-}
-
-message InitSWInfoAdd {
-  string swId       = 1;
-  string pcId       = 2;
-  string fditionId  = 3;
-  string ip         = 4;
-  string name       = 5;
-  string ver        = 6;
-}
-
-message InitCameraInfoAdd {
-  string cameraId   = 1;
-  string fditionId  = 2;
-  string id         = 3;
-  string ip         = 4;
-  string model      = 5;
-  string fw         = 6;
-}
-
-message InitGimbalInfoAdd {
-  string gimbalId   = 1;
-  string fditionId  = 2;
-  string ip         = 3;
-}
-
-message InitSwitchInfoAdd {
-  string fditionId  = 1;
-  string id         = 2;
-  string ip         = 3;
-  string brand      = 4;
-  string model      = 5;
 }
