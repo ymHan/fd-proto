@@ -3,6 +3,7 @@ syntax = "proto3";
 package fdition;
 
 service FditionService {
+  rpc InitBasicAdd(InitBasicAdd) returns (InitBasicAddResponse) {} // 최초 등록 기본 정보
   rpc InitPcInfo(InitPcInfoAdd) returns (InitPcInfoAddResponse) {} // 최초 등록 PC
   rpc InitSWInfo(InitSWInfoAdd) returns (InitSWInfoAddResponse) {} // 최초 등록 소프트웨어
   rpc InitCameraInfo(InitCameraInfoAdd) returns (InitCameraInfoAddResponse) {} // 최초 등록 카메라
