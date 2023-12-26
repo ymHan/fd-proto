@@ -18,8 +18,8 @@ message InitBasicResponse {
 }
 
 message Location {
-  float latitude   = 1;
-  float longitude  = 2;
+  float lat   = 1;
+  float long  = 2;
 }
 
 message PC {
