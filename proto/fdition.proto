@@ -49,9 +49,7 @@ message SWITCH {
   string brand      = 3;
   string model      = 4;
 }
-message GIMBAL {
-  string ip         = 1;
-}
+
 message InitBasicRequest {
   string nodeId          = 1;
   string type             = 2;
@@ -60,6 +58,6 @@ message InitBasicRequest {
   repeated PC pc          = 5;
   repeated SW sw          = 6;
   repeated CAMERA camera  = 7;
-  repeated GIMBAL gimbal  = 8;
+  repeated string gimbal  = 8;
   repeated SWITCH switch  = 9;
 }
