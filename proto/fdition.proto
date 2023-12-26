@@ -18,8 +18,8 @@ message InitBasicResponse {
 }
 
 message Location {
-  string latitude   = 1;
-  string longitude  = 2;
+  float latitude   = 1;
+  float longitude  = 2;
 }
 
 message PC {
@@ -27,7 +27,7 @@ message PC {
   string ip         = 2;
   string os         = 3;
   string gpu        = 4;
-  string gpu_driver = 5;
+  string gpuDriver = 5;
 }
 
 message SW {
@@ -51,7 +51,7 @@ message SWITCH {
 }
 
 message InitBasicRequest {
-  string node_id          = 1;
+  string nodeId          = 1;
   string type             = 2;
   string command          = 3;
   Location location       = 4;
