@@ -4,7 +4,7 @@ package fdition;
 
 service FditionService {
   rpc InitBasic(InitBasicRequest) returns (InitBasicResponse) {} // 최초 등록 기본 정보
-  rpc InputStatus(InputStatusRequest) returns (InputStatusResponse) {}
+  rpc InitStatus(InputStatusRequest) returns (InputStatusResponse) {}
 }
 
 message InputStatusResponse {
