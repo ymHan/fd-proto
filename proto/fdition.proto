@@ -8,87 +8,86 @@ service FditionService {
 }
 
 message InputStatusResponse {
-  int32 status         = 1;
+  int32 status          = 1;
   string message        = 2;
   repeated string error = 3;
 }
 
 
 message InputStatusRequest {
-  string nodeId         = 1;
-  string type           = 2;
-  string command        = 3;
-  repeated StatusPC pc  = 4;
-  repeated StatusSW sw  = 5;
-  repeated StatusCAMERA camera = 6;
-  // repeated StatusGIMBAL gimbal = 7;
+  string nodeId                 = 1;
+  string type                   = 2;
+  string command                = 3;
+  repeated StatusPC pc          = 4;
+  repeated StatusSW sw          = 5;
+  repeated StatusCAMERA camera  = 6;
 }
 
 message StatusGIMBAL {
-  string ip = 1;
+  string ip     = 1;
   string preset = 2;
-  string speed = 3;
-  string pan  = 4;
-  string tilt = 5;
-  string roll = 6;
+  string speed  = 3;
+  string pan    = 4;
+  string tilt   = 5;
+  string roll   = 6;
 }
 
 message StatusCAMERA {
-  string id = 1;
-  string ip = 2;
-  string subnet_mask = 3;
-  string gateway_addr = 4;
-  string model = 5;
-  string fw = 6;
-  string status = 7;
-  string system_frequency = 8;
+  string id                       = 1;
+  string ip                       = 2;
+  string subnet_mask              = 3;
+  string gateway_addr             = 4;
+  string model                    = 5;
+  string fw                       = 6;
+  string status                   = 7;
+  string system_frequency         = 8;
   message VIDEO {
-    string Codec = 1;
-    string VideoFormatMain = 2;
-    string VideoBitrateMain = 3;
+    string Codec                  = 1;
+    string VideoFormatMain        = 2;
+    string VideoBitrateMain       = 3;
   }
-  VIDEO video = 9;
+  VIDEO video                     = 9;
   message EXPOSURE {
-    string WhiteBalance = 1;
-    string Contrast = 2;
-    string Saturation = 3;
-    string Hue = 4;
-    string ColorTemperature = 5;
+    string WhiteBalance           = 1;
+    string Contrast               = 2;
+    string Saturation             = 3;
+    string Hue                    = 4;
+    string ColorTemperature       = 5;
     string CMOSOffsetCorrectLevel = 6;
-    string AdjustAB = 7;
-    string AdjustGM = 8;
+    string AdjustAB               = 7;
+    string AdjustGM               = 8;
   }
-  EXPOSURE exposure = 10;
+  EXPOSURE exposure               = 10;
   message COLOR {
-    string Aperture = 1;
-    string ShutterSpeed = 2;
-    string ISO = 3;
+    string Aperture               = 1;
+    string ShutterSpeed           = 2;
+    string ISO                    = 3;
   }
-  COLOR color = 11;
+  COLOR color                     = 11;
   message LENS {
-    string ManualFocusPosition = 1;
-    string ZoomPosition = 2;
-    string FocusMode = 3;
-    string LensPower = 4;
+    string ManualFocusPosition    = 1;
+    string ZoomPosition           = 2;
+    string FocusMode              = 3;
+    string LensPower              = 4;
   }
-  LENS lens = 12;
+  LENS lens                       = 12;
   message OTHERS {
-    string AutoFocusPoint = 1;
-    string ExposureMode = 2;
-    string AeArea  = 3;
-    string ExposureCompensation = 4;
+    string AutoFocusPoint         = 1;
+    string ExposureMode           = 2;
+    string AeArea                 = 3;
+    string ExposureCompensation   = 4;
     string ImageStabilizationMode = 5;
-    string Sharpness = 6;
-    string NoiseReduction = 7;
-    string LuminanceLevel = 8;
+    string Sharpness              = 6;
+    string NoiseReduction         = 7;
+    string LuminanceLevel         = 8;
   }
-  OTHERS others = 13;
+  OTHERS others                   = 13;
 }
 
 message StatusSW {
   string ip     = 1;
   string name   = 2;
-  string status    = 3;
+  string status = 3;
 }
 
 message StatusPC {
@@ -115,7 +114,7 @@ message DATA {
 }
 
 message InitBasicResponse {
-  int32 status         = 1;
+  int32 status          = 1;
   string message        = 2;
   DATA data             = 3;
   repeated string error = 4;
@@ -131,7 +130,7 @@ message PC {
   string ip         = 2;
   string os         = 3;
   string gpu        = 4;
-  string gpuDriver = 5;
+  string gpuDriver  = 5;
 }
 
 message SW {
