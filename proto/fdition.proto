@@ -18,9 +18,9 @@ message InputStatusRequest {
   string nodeId                 = 1;
   string type                   = 2;
   string command                = 3;
-  repeated StatusPC pc          = 4;
-  repeated StatusSW sw          = 5;
-  repeated StatusCAMERA camera  = 6;
+  //repeated StatusPC pc          = 4;
+  //repeated StatusSW sw          = 5;
+  //repeated StatusCAMERA camera  = 6;
 }
 
 message StatusGIMBAL {
