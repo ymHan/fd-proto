@@ -31,12 +31,12 @@ message SignUpRequest {
 
 message SignUpResponse {
   int32 status = 1;
-  repeated string error = 2;
+  string message = 2;
+  repeated string error = 3;
 }
 
 message UpdateRequest {
   int32 id = 1;
-
 }
 
 message UpdateResponse {
@@ -60,8 +60,9 @@ message SignInRequest {
 
 message SignInResponse {
   int32 status = 1;
-  repeated string error = 2;
+  string message = 2;
   string token = 3;
+  repeated string error = 4;
 }
 
 message ValidateRequest {
@@ -70,6 +71,7 @@ message ValidateRequest {
 
 message ValidateResponse {
   int32 status = 1;
-  repeated string error = 2;
+  string message = 2;
   int32 userId = 3;
+  repeated string error = 4;
 }
