@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package fdist;
+
+import "google/protobuf/empty.proto";
+
+service FDistService {
+  rpc GetCategory(google.protobuf.Empty) returns (GetCategoryResponse) {} // 카테고리 가져오기?
+  rpc GetContent(GetContentRequest) returns (GetContentResponse) {} // 컨텐츠 상세 보기
+  rpc ListContent(ListContentRequest) returns (ListContentResponse) {} // 컨텐츠 리스트 보기
+  rpc MainListContent(MainListContentRequest) returns (MainListContentResponse) {} // 메인 리스트 보기
+
+}
+
+
+message GetContentRequest {
+  string id = 1;
+}
+
+message GetContentResponse {
+  ContentItem contentItem = 1;
+}
+
+message Category {
+  int32   id      = 1;
+  string  title   = 2;
+  string  iconUrl = 3;
+}
+
+message GetCategoryResponse {
+  repeated Category category = 1;
+}
+
+message ContentItem {
+  string id = 1;
+  string title = 2;
+  string subtitle = 3;
+  string description = 4;
+  string iconUrl = 5;
+  string thumbnailUrl = 6;
+  string displayedDuration = 7;
+  string streamingUrl = 8;
+}
+
+
+

@@ -336,5 +336,17 @@ message CreateMemberResponse {
   customer - member end
  ********************************************************************************/
 
+service Category {
+  rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse) {} // 카테고리 정보 입력
+  rpc GetCategory(GetCategoryRequest) returns (GetCategoryResponse) {} // 카테고리 정보 입력
+  rpc ListCategory(ListCategoryRequest) returns (ListCategoryResponse) {} // 카테고리 정보 입력
+  rpc UpdateCategory(UpdateCategoryRequest) returns (UpdateCategoryResponse) {} // 카테고리 정보 입력
+  rpc DeleteCategory(DeleteCategoryRequest) returns (DeleteCategoryResponse) {} // 카테고리 정보 입력
+}
+message ItemCategory {
+  string  name = 1; // 카테고리명
+  int32   depth = 2; // 카테고리 깊이 1: 최상위
+  string description = 3; // 카테고리설명
+}
 
 

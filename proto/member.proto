@@ -10,11 +10,22 @@ service MemberService {
   rpc Validate(ValidateRequest) returns (ValidateResponse) {} // 로그인 유지
 
   rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {} // 멤버 권한 업데이트 //관리자용
+  rpc UpdateState(UpdateStateRequest) returns (UpdateStateResponse) {}
+}
+
+message UpdateStateRequest {
+  string status = 1;
+  string message = 2;
+  repeated string error = 3;
+}
+
+message UpdateStateResponse {
+  string result = 1;
 }
 
 message UpdateRoleRequest {
-  int32 userId = 1;
-  int32 rolesId = 2;
+  string email = 1;
+  string role = 2;
 }
 
 message UpdateRoleResponse {
@@ -75,3 +86,5 @@ message ValidateResponse {
   int32 userId = 3;
   repeated string error = 4;
 }
+
+
