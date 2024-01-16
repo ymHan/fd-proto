@@ -7,11 +7,36 @@ import "google/protobuf/empty.proto";
 service FDistService {
   rpc GetCategory(google.protobuf.Empty) returns (GetCategoryResponse) {} // 카테고리 가져오기?
   rpc GetContent(GetContentRequest) returns (GetContentResponse) {} // 컨텐츠 상세 보기
-  rpc ListContent(ListContentRequest) returns (ListContentResponse) {} // 컨텐츠 리스트 보기
-  rpc MainListContent(MainListContentRequest) returns (MainListContentResponse) {} // 메인 리스트 보기
+  //rpc ListContent(ListContentRequest) returns (ListContentResponse) {} // 컨텐츠 리스트 보기
+  //rpc MainListContent(MainListContentRequest) returns (MainListContentResponse) {} // 메인 리스트 보기
 
+  rpc VideoRecording(VideoRecordingRequest) returns (VideoRecordingResponse) {} // 비디오 녹화
+  rpc GetNodeId(GetNodeIdRequest) returns (GetNodeIdResponse) {} // 노드 아이디 가져오기
+
+  rpc Initialize(google.protobuf.Empty) returns(InitInfoResponse) {} // 초기화
 }
 
+message InitInfoResponse {
+  string nodeId = 1;
+}
+
+message VideoRecordingRequest {
+  string nodeId = 1;
+  string userId = 2;
+  string command = 3;
+}
+
+message VideoRecordingResponse {
+  string result = 1;
+}
+
+message GetNodeIdRequest {
+  string userId = 1;
+}
+
+message GetNodeIdResponse {
+  string nodeId = 1;
+}
 
 message GetContentRequest {
   string id = 1;
