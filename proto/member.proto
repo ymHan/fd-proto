@@ -8,9 +8,33 @@ service MemberService {
   rpc Delete(DeleteRequest) returns (DeleteResponse) {} // 멤버 탈퇴 / 삭제 등
   rpc SignIn(SignInRequest) returns (SignInResponse) {} // 멤버 로그인
   rpc Validate(ValidateRequest) returns (ValidateResponse) {} // 로그인 유지
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {} // 멤버 정보 조회
 
   rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {} // 멤버 권한 업데이트 //관리자용
   rpc UpdateState(UpdateStateRequest) returns (UpdateStateResponse) {}
+}
+
+message User {
+  string id             = 1;
+  string email          = 2;
+  string name           = 3;
+  string role           = 4;
+  string state          = 5;
+  bool isVerifiedEmail  = 6;
+  string createdAt      = 7;
+  string updatedAt      = 8;
+  string deletedAt      = 9;
+}
+
+message GetUserResponse {
+  string result   = 1;
+  int32 status    = 2;
+  string message  = 3;
+  User data       = 4;
+}
+
+message GetUserRequest {
+  string email = 1;
 }
 
 message UpdateStateRequest {
