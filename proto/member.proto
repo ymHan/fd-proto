@@ -16,11 +16,13 @@ service MemberService {
 message UpdateStateRequest {
   string status = 1;
   string message = 2;
-  repeated string error = 3;
 }
 
 message UpdateStateResponse {
-  string result = 1;
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  repeated string data  = 4;
 }
 
 message UpdateRoleRequest {
@@ -29,8 +31,10 @@ message UpdateRoleRequest {
 }
 
 message UpdateRoleResponse {
-  int32 status = 1;
-  repeated string error = 2;
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  repeated string data  = 4;
 }
 
 message SignUpRequest {
@@ -41,9 +45,10 @@ message SignUpRequest {
 }
 
 message SignUpResponse {
-  int32 status = 1;
-  string message = 2;
-  repeated string error = 3;
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  repeated string data  = 4;
 }
 
 message UpdateRequest {
@@ -51,8 +56,10 @@ message UpdateRequest {
 }
 
 message UpdateResponse {
-  int32 status = 1;
-  repeated string error = 2;
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  repeated string data  = 4;
 }
 
 message DeleteRequest {
@@ -60,8 +67,10 @@ message DeleteRequest {
 }
 
 message DeleteResponse {
-  int32 status = 1;
-  repeated string error = 2;
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  repeated string data  = 4;
 }
 
 message SignInRequest {
@@ -70,10 +79,10 @@ message SignInRequest {
 }
 
 message SignInResponse {
-  int32 status = 1;
-  string message = 2;
-  string token = 3;
-  repeated string error = 4;
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  repeated string data  = 4;
 }
 
 message ValidateRequest {
@@ -81,10 +90,10 @@ message ValidateRequest {
 }
 
 message ValidateResponse {
-  int32 status = 1;
-  string message = 2;
-  int32 userId = 3;
-  repeated string error = 4;
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  repeated string data  = 4;
 }
 
 
