@@ -85,7 +85,7 @@ message SignUpResponse {
   string result         = 1;
   int32 status          = 2;
   string message        = 3;
-  repeated string data  = 4;
+  repeated User data    = 4;
 }
 
 message UpdateRequest {
