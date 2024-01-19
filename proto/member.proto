@@ -131,7 +131,7 @@ message ValidateResponse {
   int32 status          = 2;
   string message        = 3;
   message DATA {
-    string id     = 1;
+    int32 id     = 1;
     string email  = 2;
   }
   repeated DATA data    = 4;
