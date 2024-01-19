@@ -28,7 +28,7 @@ message LeaveMemberResponse {
 }
 
 message User {
-  string id             = 1;
+  int32 id              = 1;
   string email          = 2;
   string name           = 3;
   string role           = 4;
@@ -40,10 +40,10 @@ message User {
 }
 
 message GetUserResponse {
-  string result   = 1;
-  int32 status    = 2;
-  string message  = 3;
-  User data       = 4;
+  string result       = 1;
+  int32 status        = 2;
+  string message      = 3;
+  repeated User data  = 4;
 }
 
 message GetUserRequest {
