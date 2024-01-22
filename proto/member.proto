@@ -94,7 +94,7 @@ message SignUpResponse {
     string role           = 4;
     string state          = 5;
     bool isVerifiedEmail  = 6;
-    int64 createdAt = 7;
+    string createdAt = 7;
   }
   repeated DATA data  = 4;
 }
