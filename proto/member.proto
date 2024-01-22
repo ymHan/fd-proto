@@ -126,14 +126,18 @@ message SignInRequest {
   string password = 2;
 }
 
-message SignInResponse {
-  string result         = 1;
-  int32 status          = 2;
-  string message        = 3;
-  message DATA {
-    optional string token = 1;
+message SignInResult {
+  oneof data {
+    string token = 1;
+    string error = 2;
   }
-  repeated DATA data  = 4;
+}
+
+message SignInResponse {
+  string result               = 1;
+  int32 status                = 2;
+  string message              = 3;
+  repeated SignInResult data  = 4;
 }
 
 message ValidateRequest {
