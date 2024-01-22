@@ -104,10 +104,10 @@ message UpdateRequest {
 }
 
 message UpdateResponse {
-  string result         = 1;
-  int32 status          = 2;
-  string message        = 3;
-  repeated string data  = 4;
+  string result       = 1;
+  int32 status        = 2;
+  string message      = 3;
+  repeated User data  = 4;
 }
 
 message DeleteRequest {
@@ -144,15 +144,19 @@ message ValidateRequest {
   string token = 1;
 }
 
-message ValidateResponse {
-  string result         = 1;
-  int32 status          = 2;
-  string message        = 3;
-  message DATA {
+message ValidateResult {
+  oneof data {
     int32 id     = 1;
-    string email  = 2;
+    string email = 2;
+    string error = 3;
   }
-  repeated DATA data    = 4;
+}
+
+message ValidateResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  repeated ValidateResult data  = 4;
 }
 
 
