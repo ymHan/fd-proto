@@ -94,7 +94,7 @@ message SignUpResponse {
     string role           = 4;
     string state          = 5;
     bool isVerifiedEmail  = 6;
-    google.protobuf.Timestamp createdAt = 7;
+    int64 createdAt = 7;
   }
   repeated DATA data  = 4;
 }
