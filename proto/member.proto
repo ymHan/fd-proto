@@ -37,8 +37,8 @@ message User {
   string state                        = 5;
   bool isVerifiedEmail                = 6;
   google.protobuf.Timestamp createdAt = 7;
-  int64 updatedAt                     = 8;
-  int64 deletedAt                     = 9;
+  google.protobuf.Timestamp updatedAt = 8;
+  google.protobuf.Timestamp deletedAt = 9;
 }
 
 message GetUserResponse {
