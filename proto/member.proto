@@ -81,7 +81,7 @@ message GetUserResponse {
 }
 
 message GetUserRequest {
-  string email = 1;
+  int32 id = 1;
 }
 
 message UpdateStateRequest {
