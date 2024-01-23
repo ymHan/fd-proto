@@ -16,6 +16,25 @@ service MemberService {
   rpc UpdateState(UpdateStateRequest) returns (UpdateStateResponse) {}
 
   rpc LeaveMember(LeaveMemberRequest) returns (LeaveMemberResponse) {} // 멤버 탈
+
+  rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse) {} // 이메일 인증
+}
+
+message VerifyEmailRequest {
+  string token = 1;
+}
+
+message VerifyEmailResponse {
+  string result         = 1;
+  int32 status          = 2;
+  string message        = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data  = 4;
 }
 
 message LeaveMemberRequest {
