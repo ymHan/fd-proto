@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
 package member;
@@ -110,10 +111,14 @@ message UpdateRoleResponse {
 }
 
 message SignUpRequest {
-  string name     = 1;
-  string email    = 2;
-  string password = 3;
-  string role     = 4;
+  string name       = 1;
+  string nickname   = 2;
+  string email      = 3;
+  string password   = 4;
+  string usertype   = 5;
+  bool pushreceive  = 6;
+  string isEmail    = 7;
+  string isPush     = 8;
 }
 
 message SignUpResponse {
@@ -123,11 +128,13 @@ message SignUpResponse {
   message DATA {
     int32 id              = 1;
     string name           = 2;
-    string email          = 3;
-    string role           = 4;
-    string state          = 5;
-    bool isVerifiedEmail  = 6;
-    string createdAt = 7;
+    string nickname       = 3;
+    string email          = 4;
+    string role           = 5;
+    string state          = 6;
+    bool isVerifiedEmail  = 7;
+    bool pushreceive      = 8;
+    string createdAt      = 9;
   }
   repeated DATA data  = 4;
 }
