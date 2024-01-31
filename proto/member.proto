@@ -117,8 +117,6 @@ message SignUpRequest {
   string password   = 4;
   string usertype   = 5;
   bool pushreceive  = 6;
-  string isEmail    = 7;
-  string isPush     = 8;
 }
 
 message SignUpResponse {
