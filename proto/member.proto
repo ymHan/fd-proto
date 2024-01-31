@@ -66,7 +66,7 @@ message GetUserResult {
     int32 id = 1;
     string email = 2;
     string name = 3;
-    string role = 4;
+    string usertype = 4;
     string state = 5;
     bool isVerifiedEmail = 6;
     string createdAt = 7;
@@ -128,7 +128,7 @@ message SignUpResponse {
     string name           = 2;
     string nickname       = 3;
     string email          = 4;
-    string role           = 5;
+    string usertype       = 5;
     string state          = 6;
     bool isVerifiedEmail  = 7;
     bool pushreceive      = 8;
