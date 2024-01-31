@@ -1,9 +1,13 @@
 syntax = "proto3";
 
-package "video";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+package video;
 
 service myVideoService {
   rpc RecordVideo (RecordVideoRequest) returns (RecordVideoResponse) {}
+  rpc Video(VideoRequest) returns (stream VideoResponse) {}
 }
 
 message RecordVideoRequest {

@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package backoffice;
 
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
 /********************************************************************************
   거래처 관련 시작
  ********************************************************************************/
@@ -11,6 +14,21 @@ service BO_Customer_Service {
   rpc DeleteCustomer(DeleteCustomerRequest) returns (DeleteCustomerResponse) {} // 거래처 정보 삭제
   rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse) {} // 거래처 정보 조회
   rpc ListCustomer(ListCustomerRequest) returns (ListCustomerResponse) {} //거래처 정보 목록 조회
+
+  rpc MakeQRCode(MakeQRCodeRequest) returns (MakeQRCodeResponse) {} // QR코드 생성
+}
+
+message MakeQRCodeResponse {
+  int32 status = 1;
+  message Result {
+    string url = 1;
+  }
+  Result result = 2;
+  repeated string error = 3;
+}
+
+message MakeQRCodeRequest {
+  string nodeId = 1; // 거래처코드번호
 }
 
 message DeleteCustomerRequest {
