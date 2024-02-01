@@ -8,7 +8,7 @@ package member;
 service MemberService {
   rpc SignUp(SignUpRequest) returns (SignUpResponse) {} // 멤버 등록
   rpc Update(UpdateRequest) returns (UpdateResponse) {} // 멤버 정보 업데이트
-  rpc Delete(DeleteRequest) returns (DeleteResponse) {} // 멤버 탈퇴 / 삭제 등
+  // rpc Delete(DeleteRequest) returns (DeleteResponse) {} // 멤버 탈퇴 / 삭제 등 백오피스 기능
   rpc SignIn(SignInRequest) returns (SignInResponse) {} // 멤버 로그인
   rpc Validate(ValidateRequest) returns (ValidateResponse) {} // 로그인 유지
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {} // 멤버 정보 조회
@@ -16,12 +16,32 @@ service MemberService {
   rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {} // 멤버 권한 업데이트 //관리자용
   rpc UpdateState(UpdateStateRequest) returns (UpdateStateResponse) {}
 
-  rpc LeaveMember(LeaveMemberRequest) returns (LeaveMemberResponse) {} // 멤버 탈
+  rpc LeaveMember(LeaveMemberRequest) returns (LeaveMemberResponse) {} // 회원 탈퇴
 
   rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse) {} // 이메일 인증
 
   rpc CheckEmailDuplication(CheckEmailDuplicationRequest) returns (CheckEmailDuplicationResponse) {} // 이메일 중복 확인
   rpc CheckNicknameDuplication(CheckNicknameDuplicationRequest) returns (CheckNicknameDuplicationResponse) {} // 닉네임 중복 확인
+
+  rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordResponse) {} // 비밀번호 변경
+}
+
+message UpdatePasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
+message UpdatePasswordResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated string data = 4;
 }
 
 message CheckNicknameDuplicationRequest {
@@ -83,7 +103,13 @@ message LeaveMemberResponse {
   string result         = 1;
   int32 status          = 2;
   string message        = 3;
-  repeated string data  = 4;
+  message DATA {
+    oneof data{
+      bool result   = 1;
+      string error  = 2;
+    }
+  }
+  repeated DATA data    = 4;
 }
 
 message User {
@@ -176,25 +202,25 @@ message SignUpResponse {
 }
 
 message UpdateRequest {
-  int32 id = 1;
+  string email = 1;
+  string name = 2;
+  string nickname = 3;
 }
 
 message UpdateResponse {
   string result       = 1;
   int32 status        = 2;
   string message      = 3;
-  repeated User data  = 4;
-}
-
-message DeleteRequest {
-  int32 userId = 1;
-}
-
-message DeleteResponse {
-  string result         = 1;
-  int32 status          = 2;
-  string message        = 3;
-  repeated string data  = 4;
+  message DATA {
+    int32 id          = 1;
+    string email      = 2;
+    string name       = 3;
+    string nickname   = 4;
+    string usertype   = 5;
+    string createdAt  = 6;
+    string updatedAt  = 7;
+  }
+  repeated DATA data  = 4;
 }
 
 message SignInRequest {
