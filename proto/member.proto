@@ -218,8 +218,8 @@ message SignUpRequest {
   string nickname   = 2;
   string email      = 3;
   string password   = 4;
-  string usertype   = 5;
-  bool pushreceive  = 6;
+  bool pushreceive  = 5;
+  string usertype   = 6;
 }
 
 message SignUpResult {
