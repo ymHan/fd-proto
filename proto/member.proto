@@ -274,8 +274,9 @@ message SignInResult {
     string email = 1;
     string name = 2;
     string nickname = 3;
-    string token = 4;
-    string error = 5;
+    bool pushreceive = 4;
+    string token = 5;
+    string error = 6;
   }
 }
 
