@@ -24,7 +24,10 @@ message GetVideoByIdRequest {
 }
 
 message GetVideoByIdResponse {
-  Videos video = 1;
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  Videos video = 4;
 }
 
 message Videos {
