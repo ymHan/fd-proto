@@ -22,14 +22,6 @@ service FDistService {
 message GetVideoByIdRequest {
   int32 id = 1;
 }
-
-message GetVideoByIdResponse {
-  string result = 1;
-  int32 status = 2;
-  string message = 3;
-  Videos data = 4;
-}
-
 message Videos {
   int32 id = 1;
   string email = 2;
@@ -54,6 +46,13 @@ message Videos {
   string created_at = 21;
   string updated_at = 22;
   string thumbnailUrl = 23;
+}
+
+message GetVideoByIdResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  repeated Videos data = 4;
 }
 
 message GetVideoListResponse {
