@@ -16,7 +16,7 @@ service FDistService {
 
   rpc Initialize(google.protobuf.Empty) returns(InitInfoResponse) {} // 초기화
 
-  rpc GetVideoList(google.protobuf.Empty) returns (GetVideoListResponse) {} // 비디오 리스트 가져오기
+  rpc GetVideos(google.protobuf.Empty) returns (GetVideoListResponse) {} // 비디오 리스트 가져오기
 }
 
 message Videos {
