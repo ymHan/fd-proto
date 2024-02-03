@@ -271,8 +271,11 @@ message SignInRequest {
 
 message SignInResult {
   oneof data {
-    string token = 1;
-    string error = 2;
+    string email = 1;
+    string name = 2;
+    string nickname = 3;
+    string token = 4;
+    string error = 5;
   }
 }
 
