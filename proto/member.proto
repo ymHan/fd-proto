@@ -27,6 +27,43 @@ service MemberService {
   rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse) {} // 비밀번호 초기화
   rpc EmailVerificationCode(EmailVerificationCodeRequest) returns (EmailVerificationCodeResponse) {} // 이메일 인증 코드 전송
 
+  rpc FindEmail(FindEmailRequest) returns (FindEmailResponse) {} // 이메일 찾기
+  rpc FindPassword(FindPasswordRequest) returns (FindPasswordResponse) {} // 비밀번호 찾기
+}
+
+message FindEmailRequest {
+  string email = 1;
+}
+
+message FindEmailResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      string email = 1;
+      string error = 2;
+    }
+  }
+  repeated string data = 4;
+}
+
+message FindPasswordRequest {
+  string email = 1;
+  string code = 2;
+}
+
+message FindPasswordResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      string token = 1;
+      string error = 2;
+    }
+  }
+  repeated string data = 4;
 }
 
 message EmailVerificationCodeRequest {
