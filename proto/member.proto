@@ -45,7 +45,7 @@ message FindEmailResponse {
       string error = 2;
     }
   }
-  repeated string data = 4;
+  repeated DATA data = 4;
 }
 
 message FindPasswordRequest {
@@ -63,7 +63,7 @@ message FindPasswordResponse {
       string error = 2;
     }
   }
-  repeated string data = 4;
+  repeated DATA data = 4;
 }
 
 message EmailVerificationCodeRequest {
