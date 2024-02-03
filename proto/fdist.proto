@@ -79,7 +79,7 @@ message GetVideoByIdResponse {
   string result = 1;
   int32 status = 2;
   string message = 3;
-  IdVideo data = 4;
+  repeated IdVideo data = 4;
 }
 
 message GetVideoListResponse {
