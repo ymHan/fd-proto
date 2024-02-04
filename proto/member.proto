@@ -35,7 +35,7 @@ service MemberService {
   rpc UpdateNickname(UpdateNicknameRequest) returns (UpdateNicknameResponse) {} // 닉네임 변경
 }
 message UpdateEmailReceiveRequest {
-  string email = 1;
+  string id = 1;
   bool emailreceive = 2;
 }
 
@@ -53,7 +53,7 @@ message UpdateEmailReceiveResponse {
 }
 
 message UpdatePushReceiveRequest {
-  string email = 1;
+  string id = 1;
   bool pushreceive = 2;
 }
 
@@ -71,7 +71,7 @@ message UpdatePushReceiveResponse {
 }
 
 message UpdateNicknameRequest {
-  string email = 1;
+  string id = 1;
   string nickname = 2;
 }
 
@@ -336,19 +336,16 @@ message SignUpResponse {
 }
 
 message UpdateRequest {
-  string email = 1;
+  int32 id = 1;
   string name = 2;
   string nickname = 3;
+  string pushreceive = 4;
+  string emailreceive = 5;
 }
 
 message UpdateResult {
   int32 id          = 1;
   string email      = 2;
-  string name       = 3;
-  string nickname   = 4;
-  string usertype   = 5;
-  string createdAt  = 6;
-  string updatedAt  = 7;
 }
 
 message UpdateResponse {
@@ -365,14 +362,14 @@ message SignInRequest {
 
 message SignInResult {
   oneof data {
-    int32 id = 1;
-    string email = 2;
-    string name = 3;
-    string nickname = 4;
-    bool pushreceive = 5;
+    int32 id          = 1;
+    string email      = 2;
+    string name       = 3;
+    string nickname   = 4;
+    bool pushreceive  = 5;
     bool emailreceive = 6;
-    string token = 7;
-    string error = 8;
+    string token      = 7;
+    string error      = 8;
   }
 }
 
