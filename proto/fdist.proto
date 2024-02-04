@@ -27,7 +27,8 @@ service FDistService {
 message ReportVideoRequest {
   int32 userId = 1;
   int32 videoId = 2;
-  string reason = 3;
+  string reportType = 3;
+  string report = 4;
 }
 
 message ReportVideoResponse {
