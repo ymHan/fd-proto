@@ -92,7 +92,7 @@ message GetVideoByIdResponse {
 message Meta {
   int32 total = 1;
   int32 page = 2;
-  int32 lastpage = 3;
+  int32 last_page = 3;
 }
 
 message GetVideoListResponse {
