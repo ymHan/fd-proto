@@ -20,6 +20,26 @@ service FDistService {
   rpc GetVideoById(GetVideoByIdRequest) returns (GetVideoByIdResponse) {} // 비디오 아이디로 비디오 가져오기
 
   rpc GetCategorySub(google.protobuf.Empty) returns (GetCategorySubResponse) {} // 카테고리 서브 가져오기
+  rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
+}
+
+message ToggleLikeRequest {
+  int32 userId = 1;
+  string videoId = 2;
+  bool isLike = 3;
+}
+
+message ToggleLikeResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data {
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data = 4;
 }
 
 message GetCategorySubResponse {
