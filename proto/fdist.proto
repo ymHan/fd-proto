@@ -24,9 +24,13 @@ service FDistService {
 
 message GetCategorySubResponse {
   string result = 1;
-  string status = 2;
+  int32 status = 2;
   string message = 3;
-  repeated string data = 4;
+  message DATA {
+    string category = 1;
+    string categorySubName = 2;
+  }
+  repeated DATA data = 4;
 }
 
 message GetVideoListRequest {
