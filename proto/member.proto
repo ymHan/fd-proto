@@ -365,13 +365,14 @@ message SignInRequest {
 
 message SignInResult {
   oneof data {
-    string email = 1;
-    string name = 2;
-    string nickname = 3;
-    bool pushreceive = 4;
-    bool emailreceive = 5;
-    string token = 6;
-    string error = 7;
+    int32 id = 1;
+    string email = 2;
+    string name = 3;
+    string nickname = 4;
+    bool pushreceive = 5;
+    bool emailreceive = 6;
+    string token = 7;
+    string error = 8;
   }
 }
 
