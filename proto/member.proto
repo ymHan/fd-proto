@@ -369,8 +369,9 @@ message SignInResult {
     string name = 2;
     string nickname = 3;
     bool pushreceive = 4;
-    string token = 5;
-    string error = 6;
+    bool emailreceive = 5;
+    string token = 6;
+    string error = 7;
   }
 }
 
