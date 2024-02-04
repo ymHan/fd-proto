@@ -23,8 +23,8 @@ service FDistService {
 
 message GetVideoListRequest {
   string cat = 1;
-  string page = 2;
-  string limit = 3;
+  int32 page = 2;
+  int32 limit = 3;
 }
 message GetVideoByIdRequest {
   int32 id = 1;
