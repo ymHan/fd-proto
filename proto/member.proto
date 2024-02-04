@@ -35,7 +35,7 @@ service MemberService {
   rpc UpdateNickname(UpdateNicknameRequest) returns (UpdateNicknameResponse) {} // 닉네임 변경
 }
 message UpdateEmailReceiveRequest {
-  string id = 1;
+  int32 id = 1;
   bool emailreceive = 2;
 }
 
@@ -53,7 +53,7 @@ message UpdateEmailReceiveResponse {
 }
 
 message UpdatePushReceiveRequest {
-  string id = 1;
+  int32 id = 1;
   bool pushreceive = 2;
 }
 
@@ -71,7 +71,7 @@ message UpdatePushReceiveResponse {
 }
 
 message UpdateNicknameRequest {
-  string id = 1;
+  int32 id = 1;
   string nickname = 2;
 }
 
