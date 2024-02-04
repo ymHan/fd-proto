@@ -29,6 +29,63 @@ service MemberService {
 
   rpc FindEmail(FindEmailRequest) returns (FindEmailResponse) {} // 이메일 찾기
   rpc FindPassword(FindPasswordRequest) returns (FindPasswordResponse) {} // 비밀번호 찾기
+
+  rpc UpdatePushReceive(UpdatePushReceiveRequest) returns (UpdatePushReceiveResponse) {} // 푸시 수신 여부 변경
+  rpc UpdateEmailReceive(UpdateEmailReceiveRequest) returns (UpdateEmailReceiveResponse) {} // 이메일 수신 여부 변경
+  rpc UpdateNickname(UpdateNicknameRequest) returns (UpdateNicknameResponse) {} // 닉네임 변경
+}
+message UpdateEmailReceiveRequest {
+  string email = 1;
+  bool emailreceive = 2;
+}
+
+message UpdateEmailReceiveResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data = 4;
+}
+
+message UpdatePushReceiveRequest {
+  string email = 1;
+  bool pushreceive = 2;
+}
+
+message UpdatePushReceiveResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data = 4;
+}
+
+message UpdateNicknameRequest {
+  string email = 1;
+  string nickname = 2;
+}
+
+message UpdateNicknameResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data = 4;
 }
 
 message FindEmailRequest {
@@ -255,19 +312,20 @@ message SignUpRequest {
   string email      = 3;
   string password   = 4;
   bool pushreceive  = 5;
-  string usertype   = 6;
+  bool emailreceive = 6;
+  string usertype   = 7;
 }
 
 message SignUpResult {
-  int32 id              = 1;
-  string name           = 2;
-  string nickname       = 3;
-  string email          = 4;
-  string usertype       = 5;
-  string state          = 6;
-  bool isVerifiedEmail  = 7;
-  bool pushreceive      = 8;
-  string createdAt      = 9;
+  int32 id          = 1;
+  string name       = 2;
+  string nickname   = 3;
+  string email      = 4;
+  string usertype   = 5;
+  string state      = 6;
+  bool emailreceive = 7;
+  bool pushreceive  = 8;
+  string createdAt  = 9;
 }
 
 message SignUpResponse {
