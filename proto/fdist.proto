@@ -18,13 +18,15 @@ service FDistService {
 
   rpc GetVideos(GetVideoListRequest) returns (GetVideoListResponse) {} // 비디오 리스트 가져오기
   rpc GetVideoById(GetVideoByIdRequest) returns (GetVideoByIdResponse) {} // 비디오 아이디로 비디오 가져오기
+  rpc GetVideoCategory(GetVideoCategoryRequest) returns (GetVideoCategoryResponse) {} // 비디오 카테고리 가져오기
 
   rpc GetCategorySub(google.protobuf.Empty) returns (GetCategorySubResponse) {} // 카테고리 서브 가져오기
   rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
 
   rpc ReportVideo(ReportVideoRequest) returns (ReportVideoResponse) {} // 비디오 신고
-  rpc GetVideoCategory(google.protobuf.Empty) returns (GetVideoCategoryResponse) {} // 비디오 카테고리 가져오기
-
+}
+message GetVideoCategoryRequest {
+  string caty = 1;
 }
 
 message GetVideoCategoryResponse {
