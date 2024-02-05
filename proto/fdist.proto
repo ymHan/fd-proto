@@ -6,7 +6,6 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
 service FDistService {
-  rpc GetCategory(google.protobuf.Empty) returns (GetCategoryResponse) {} // 카테고리 가져오기?
   rpc GetContent(GetContentRequest) returns (GetContentResponse) {} // 컨텐츠 상세 보기
   //rpc ListContent(ListContentRequest) returns (ListContentResponse) {} // 컨텐츠 리스트 보기
   //rpc MainListContent(MainListContentRequest) returns (MainListContentResponse) {} // 메인 리스트 보기
@@ -20,6 +19,7 @@ service FDistService {
   rpc GetVideoById(GetVideoByIdRequest) returns (GetVideoByIdResponse) {} // 비디오 아이디로 비디오 가져오기
   rpc GetVideoCategory(GetVideoCategoryRequest) returns (GetVideoCategoryResponse) {} // 비디오 카테고리 가져오기
 
+  rpc GetCategory(google.protobuf.Empty) returns (GetCategoryResponse) {} // 카테고리 가져오기
   rpc GetCategorySub(google.protobuf.Empty) returns (GetCategorySubResponse) {} // 카테고리 서브 가져오기
   rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
 
@@ -159,9 +159,9 @@ message GetVideoByIdResponse {
 }
 
 message Meta {
-  int32 total = 1;
-  int32 page = 2;
-  int32 last_page = 3;
+  int32 total     = 1;
+  int32 page      = 2;
+  int32 last_page  = 3;
 }
 
 message GetVideoListResponse {
