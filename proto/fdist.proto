@@ -38,8 +38,8 @@ message GetVideoRecordTypeResponse {
   string result = 1;
   int32 status = 2;
   string message = 3;
-  repeated IdVideo2 data = 4;
-  Meta2 meta = 5;
+  repeated GetRecordTypeResult data = 4;
+  GetRecordTypeResultMetaInfo meta = 5;
 }
 
 message GetRecordTypeResponse {
@@ -127,7 +127,7 @@ message GetVideoByIdRequest {
   int32 id = 1;
 }
 
-message IdVideo2 {
+message GetRecordTypeResult {
   int32 id = 1;
   string email = 2;
   string title = 3;
@@ -218,10 +218,10 @@ message Meta {
   int32 last_page  = 3;
 }
 
-message Meta2 {
+message GetRecordTypeResultMetaInfo {
   int32 total     = 1;
   int32 page      = 2;
-  int32 last_page  = 3;
+  int32 lastpage  = 3;
 }
 
 message GetVideoListResponse {
