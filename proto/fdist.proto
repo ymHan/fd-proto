@@ -22,10 +22,12 @@ service FDistService {
 
   rpc GetCategory(google.protobuf.Empty) returns (GetCategoryResponse) {} // 카테고리 가져오기
   rpc GetCategorySub(google.protobuf.Empty) returns (GetCategorySubResponse) {} // 카테고리 서브 가져오기
+  rpc GetRecordTypeList(google.protobuf.Empty) returns (google.protobuf.Empty) {} // 녹화 타입 가져오기
   rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
 
   rpc ReportVideo(ReportVideoRequest) returns (ReportVideoResponse) {} // 비디오 신고
   rpc GetRecordType(google.protobuf.Empty) returns (GetRecordTypeResponse) {} // 녹화 타입 가져오기
+
 }
 
 message GetVideoRecordTypeRequest {
