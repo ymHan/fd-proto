@@ -18,13 +18,40 @@ service FDistService {
   rpc GetVideos(GetVideoListRequest) returns (GetVideoListResponse) {} // 비디오 리스트 가져오기
   rpc GetVideoById(GetVideoByIdRequest) returns (GetVideoByIdResponse) {} // 비디오 아이디로 비디오 가져오기
   rpc GetVideoCategory(GetVideoCategoryRequest) returns (GetVideoCategoryResponse) {} // 비디오 카테고리 가져오기
+  rpc GetVideoRecordType(GetVideoRecordTypeRequest) returns (GetVideoRecordTypeResponse) {} // 비디오 녹화 타입 가져오기
 
   rpc GetCategory(google.protobuf.Empty) returns (GetCategoryResponse) {} // 카테고리 가져오기
   rpc GetCategorySub(google.protobuf.Empty) returns (GetCategorySubResponse) {} // 카테고리 서브 가져오기
   rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
 
   rpc ReportVideo(ReportVideoRequest) returns (ReportVideoResponse) {} // 비디오 신고
+  rpc GetRecordType(google.protobuf.Empty) returns (GetRecordTypeResponse) {} // 녹화 타입 가져오기
 }
+
+message GetVideoRecordTypeRequest {
+  string type = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message GetVideoRecordTypeResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  repeated IdVideo data = 4;
+}
+
+message GetRecordTypeResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 index = 1;
+    string recordType = 2;
+  }
+  repeated DATA data = 4;
+}
+
 message GetVideoCategoryRequest {
   string caty = 1;
 }
