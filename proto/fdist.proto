@@ -23,7 +23,21 @@ service FDistService {
   rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
 
   rpc ReportVideo(ReportVideoRequest) returns (ReportVideoResponse) {} // 비디오 신고
+  rpc GetVideoCategory(google.protobuf.Empty) returns (GetVideoCategoryResponse) {} // 비디오 카테고리 가져오기
+
 }
+
+message GetVideoCategoryResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 index = 1;
+    string category = 2;
+  }
+  repeated DATA data = 4;
+}
+
 message ReportVideoRequest {
   int32 userId = 1;
   int32 videoId = 2;
@@ -193,7 +207,14 @@ message Category {
 }
 
 message GetCategoryResponse {
-  repeated Category category = 1;
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 index = 1;
+    string category = 2;
+  }
+  repeated DATA data = 4;
 }
 
 message ContentItem {
