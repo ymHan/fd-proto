@@ -39,6 +39,7 @@ message GetVideoRecordTypeResponse {
   int32 status = 2;
   string message = 3;
   repeated IdVideo data = 4;
+  Meta meta = 5;
 }
 
 message GetRecordTypeResponse {
