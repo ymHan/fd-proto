@@ -34,7 +34,7 @@ message GetLikeCheckResponse {
   int32 status = 2;
   string message = 3;
   message DATA {
-    bool isLike = 1;
+    bool result = 1;
   }
   DATA data = 4;
 }
