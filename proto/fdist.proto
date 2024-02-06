@@ -131,7 +131,8 @@ message ToggleLikeResponse {
   message DATA {
     oneof data {
       bool result = 1;
-      string error = 2;
+      int32 likeCount = 2;
+      string error = 3;
     }
   }
   repeated DATA data = 4;
