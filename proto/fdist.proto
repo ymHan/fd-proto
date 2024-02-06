@@ -36,8 +36,9 @@ message GetLikeCheckResponse {
   message DATA {
     bool result = 1;
   }
-  DATA data = 4;
+  repeated DATA data = 4;
 }
+
 message GetLikeCheckRequest {
   int32 userId = 1;
   int32 videoId = 2;
