@@ -529,13 +529,15 @@ message CreateCategoryReq {
 }
 // 카테고리 등록 응답
 message CreateCategoryRes {
-  defaultResult result = 1;
+  string status   = 1;
+  string message  = 2;
 }
 // 카테고리 목록 응답
 message ListCategoryRes {
-  defaultResult result            = 1;
-  repeated CategoryItem category  = 2;
-  Paging paging                   = 3;
+  string status                   = 1;
+  string message                  = 2;
+  repeated CategoryItem category  = 3;
+  Paging meta                     = 4;
 }
 // 카테고리 상세 요청
 message GetCategoryReq {
