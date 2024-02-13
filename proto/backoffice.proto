@@ -516,7 +516,7 @@ message CategorySubItem {
 }
 // 서브 카테고리 등록
 message CreateSubCategoryReq {
-  string  categoryId  = 1; // 상위 카테고리 코드
+  int32  categoryId   = 1; // 상위 카테고리 코드
   string  name        = 2; // 카테고리명
   string  code        = 3; // 카테고리 코드
   string  description = 4; // 카테고리설명
