@@ -534,10 +534,10 @@ message CreateCategoryRes {
 }
 // 카테고리 목록 응답
 message ListCategoryRes {
-  string status                   = 1;
-  string message                  = 2;
-  repeated CategoryItem category  = 3;
-  Paging meta                     = 4;
+  string status               = 1;
+  string message              = 2;
+  repeated CategoryItem data  = 3;
+  Paging meta                 = 4;
 }
 // 카테고리 상세 요청
 message GetCategoryReq {
