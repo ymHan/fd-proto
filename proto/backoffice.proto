@@ -503,15 +503,16 @@ message ListSubCategoryReq {
 }
 // 서브 카테고리 목록 응답
 message ListSubCategoryRes {
-  defaultResult result = 1;
-  repeated CategorySubItem category = 2;
-  Paging paging = 3;
+  string status     = 1;
+  string message    = 2;
+  repeated CategorySubItem category = 3;
+  Paging meta       = 4;
 }
 // 카테고리 내용
 message CategoryItem {
-  int32   id = 1; // 카테고리코드번호
-  string  name = 2; // 카테고리명
-  string  code = 3; // 카테고리 코드
+  int32   id          = 1; // 카테고리코드번호
+  string  name        = 2; // 카테고리명
+  string  code        = 3; // 카테고리 코드
   string  description = 4; // 카테고리설명
 }
 // 서브 카테고리 내용
@@ -549,11 +550,11 @@ message ListCategoryRes {
 }
 // 카테고리 상세 요청
 message GetCategoryReq {
-  string id = 1; // 카테고리코드번호
+  int32 id = 1; // 카테고리코드번호
 }
 // 서브 카테고리 상세 요청
 message GetSubCategoryReq {
-  string id = 1; // 카테고리코드번호
+  int32 id = 1; // 서브 카테고리 코드 번호
 }
 
 /********************************************************************************
