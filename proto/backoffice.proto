@@ -417,7 +417,7 @@ message CreateMemberResponse {
 /********************************************************************************
  카테고리 관리 시작
 *********************************************************************************/
-service Category_Service {
+service CategoryService {
   rpc CreateCategory(CreateCategoryReq) returns (CreateCategoryRes) {} // 카테고리 정보 입력
   rpc CreateSubCategory(CreateSubCategoryReq) returns (CreateCategoryRes) {} // 서브 카테고리 정보 입력
   rpc ListCategory(ListCategoryReq) returns (ListCategoryRes) {} // 카테고리 정보 목록 조회
