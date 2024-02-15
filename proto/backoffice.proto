@@ -567,9 +567,7 @@ service  MwcService {
 }
 
 message GetMwcRequest {
-  string video      = 1;
-  string thumbnail  = 2;
-  string download   = 3;
+  string filename = 1;
 }
 
 message GetMwcResponse {
@@ -579,13 +577,13 @@ message GetMwcResponse {
 }
 
 message Mwc {
-  string video = 1;
-  string thumbnail = 2;
-  string download = 3;
+  string video      = 1;
+  string thumbnail  = 2;
+  string download   = 3;
 }
 
 message ListMwcResponse {
-  string status   = 1;
-  string message  = 2;
+  string status     = 1;
+  string message    = 2;
   repeated Mwc data = 3;
 }
