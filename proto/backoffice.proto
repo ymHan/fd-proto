@@ -567,7 +567,7 @@ service  MwcService {
 }
 
 message GetMwcRequest {
-  string filename = 1;
+  int32 index = 1;
 }
 
 message GetMwcResponse {
