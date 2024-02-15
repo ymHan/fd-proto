@@ -555,7 +555,37 @@ message GetCategoryReq {
 message GetSubCategoryReq {
   int32 id = 1; // 서브 카테고리 코드 번호
 }
-
 /********************************************************************************
  카테고리 관리 끝
 *********************************************************************************/
+/********************************************************************************
+ MWC 용
+*********************************************************************************/
+service  MwcService {
+  rpc ListMwc(google.protobuf.Empty) returns (ListMwcResponse) {}
+  rpc GetMwc(GetMwcRequest) returns (GetMwcResponse) {}
+}
+
+message GetMwcRequest {
+  string video      = 1;
+  string thumbnail  = 2;
+  string download   = 3;
+}
+
+message GetMwcResponse {
+  string status   = 1;
+  string message  = 2;
+  Mwc data        = 3;
+}
+
+message Mwc {
+  string video = 1;
+  string thumbnail = 2;
+  string download = 3;
+}
+
+message ListMwcResponse {
+  string status   = 1;
+  string message  = 2;
+  repeated Mwc data = 3;
+}
