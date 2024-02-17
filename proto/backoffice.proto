@@ -28,12 +28,78 @@ message defaultResult {
 /********************************************************************************
  비디오 관련 시작
 *********************************************************************************/
-service BO_Video_Service {
+service VideoService {
   rpc CreateVideo(CreateVideoRequest) returns (CreateVideoResponse) {} // 비디오 정보 입력
 //  rpc GetVideo(GetVideoRequest) returns (GetVideoResponse) {} // 비디오 정보 입력
 //  rpc ListVideo(ListVideoRequest) returns (ListVideoResponse) {} // 비디오 정보 입력
 //  rpc UpdateVideo(UpdateVideoRequest) returns (UpdateVideoResponse) {} // 비디오 정보 입력
 //  rpc DeleteVideo(DeleteVideoRequest) returns (DeleteVideoResponse) {} // 비디오 정보 입력
+  //임시...
+  rpc V1CreateVideo(V1CreateVideoRequest) returns (V1CreateVideoResponse) {} // 비디오 정보 입력
+  rpc V1GetVideo(V1GetVideoRequest) returns (V1GetVideoResponse) {} // 비디오 정보 입력
+}
+
+message V1GetVideoResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  v1Result data = 4;
+}
+
+message V1GetVideoRequest {
+  string id = 1;
+}
+
+message v1Result {
+  int32 id = 1;
+  string email = 2;
+  string title = 3;
+  string subTitle = 4;
+  string description = 5;
+  string ownerName = 6;
+  string ownerNickName = 7;
+  string ownerChannelName = 8;
+  string ownerProfileIconUrl = 9;
+  string thumbnailUrl = 10;
+  int32 viewCount = 11;
+  int32 reportCount = 12;
+  int32 likesCount = 13;
+  string duration = 14;
+  string category = 15;
+  string categorySub = 16;
+  string categorySubCode = 17;
+  string recordType = 18;
+  repeated string contentUrlList = 19;
+  repeated string poseindicatorList = 20;
+  string nodeId = 21;
+  string created_at = 22;
+}
+
+message V1CreateVideoResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  v1Result data = 4;
+}
+
+message V1CreateVideoRequest {
+  string email = 1;
+  string title = 2;
+  string subTitle = 3;
+  string description = 4;
+  string ownerName = 5;
+  string ownerNickName = 6;
+  string ownerChannelName = 7;
+  string ownerProfileIconUrl = 8;
+  string thumbnailUrl = 9;
+  string duration = 10;
+  string category = 11;
+  string categorySub = 12;
+  string categorySubCode = 13;
+  string recordType = 14;
+  repeated string contentUrlList = 15;
+  repeated string poseindicatorList = 16;
+  string nodeId = 17;
 }
 
 message DefaultResult {
