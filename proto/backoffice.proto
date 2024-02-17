@@ -70,7 +70,7 @@ message v1Result {
   string categorySubCode = 17;
   string recordType = 18;
   repeated string contentUrlList = 19;
-  repeated string poseindicatorList = 20;
+  repeated string poseIndicatorList = 20;
   string nodeId = 21;
   string created_at = 22;
 }
@@ -98,7 +98,7 @@ message V1CreateVideoRequest {
   string categorySubCode = 13;
   string recordType = 14;
   repeated string contentUrlList = 15;
-  repeated string poseindicatorList = 16;
+  repeated string poseIndicatorList = 16;
   string nodeId = 17;
 }
 
