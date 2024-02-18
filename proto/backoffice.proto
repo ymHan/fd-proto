@@ -47,7 +47,7 @@ message V1GetVideoResponse {
 }
 
 message V1GetVideoRequest {
-  string id = 1;
+  int32 id = 1;
 }
 
 message v1Result {
