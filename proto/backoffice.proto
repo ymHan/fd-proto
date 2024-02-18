@@ -107,7 +107,7 @@ message v1Result {
   repeated string contentUrlList = 19;
   repeated string poseIndicatorList = 20;
   string nodeId = 21;
-  string created_at = 22;
+  string createdAt = 22;
 }
 
 message V1CreateVideoResponse {
