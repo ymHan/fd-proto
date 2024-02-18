@@ -78,7 +78,31 @@ message V1GetVideoResponse {
   string result = 1;
   int32 status = 2;
   string message = 3;
-  v1Result data = 4;
+  message DATA {
+    int32 id = 1;
+    string email = 2;
+    string title = 3;
+    string subTitle = 4;
+    string description = 5;
+    string ownerName = 6;
+    string ownerNickName = 7;
+    string ownerChannelName = 8;
+    string ownerProfileIconUrl = 9;
+    string thumbnailUrl = 10;
+    int32 viewCount = 11;
+    int32 reportCount = 12;
+    int32 likesCount = 13;
+    string duration = 14;
+    string category = 15;
+    string categorySub = 16;
+    string categorySubCode = 17;
+    string recordType = 18;
+    repeated string contentUrlList = 19;
+    repeated string poseIndicatorList = 20;
+    string nodeId = 21;
+    string createdAt = 22;
+  }
+  DATA data = 4;
 }
 
 message V1GetVideoRequest {
@@ -114,7 +138,31 @@ message V1CreateVideoResponse {
   string result = 1;
   int32 status = 2;
   string message = 3;
-  v1Result data = 4;
+  message Data {
+    int32 id = 1;
+    string email = 2;
+    string title = 3;
+    string subTitle = 4;
+    string description = 5;
+    string ownerName = 6;
+    string ownerNickName = 7;
+    string ownerChannelName = 8;
+    string ownerProfileIconUrl = 9;
+    string thumbnailUrl = 10;
+    int32 viewCount = 11;
+    int32 reportCount = 12;
+    int32 likesCount = 13;
+    string duration = 14;
+    string category = 15;
+    string categorySub = 16;
+    string categorySubCode = 17;
+    string recordType = 18;
+    repeated string contentUrlList = 19;
+    repeated string poseIndicatorList = 20;
+    string nodeId = 21;
+    string createdAt = 22;
+  }
+  Data data = 4;
 }
 
 message V1CreateVideoRequest {
