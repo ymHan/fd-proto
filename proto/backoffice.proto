@@ -37,6 +37,41 @@ service VideoService {
   //임시...
   rpc V1CreateVideo(V1CreateVideoRequest) returns (V1CreateVideoResponse) {} // 비디오 정보 입력
   rpc V1GetVideo(V1GetVideoRequest) returns (V1GetVideoResponse) {} // 비디오 정보 입력
+  rpc V1ListVideo(V1ListVideoRequest) returns (V1ListVideoResponse) {} // 비디오 정보 입력
+  rpc V1DeleteVideo(V1DeleteVideoRequest) returns (V1DeleteVideoResponse) {} // 비디오 정보 입력
+}
+
+message V1DeleteVideoRequest {
+  int32 id = 1;
+}
+
+message V1DeleteVideoResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message V1ListVideoRequest {
+  int32 page = 1;
+  int32 limit = 2;
+  string sort = 3;
+  string order = 4;
+}
+
+message V1ListVideoResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message Paging {
+    int32 page = 1;
+    int32 limit = 2;
+    int32 totalCount = 3;
+    int32 totalPage = 4;
+    string sort = 5;
+    string order = 6;
+  }
+  Paging meta = 4;
+  repeated v1Result data = 5;
 }
 
 message V1GetVideoResponse {
