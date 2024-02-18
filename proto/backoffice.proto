@@ -107,7 +107,7 @@ message v1Result {
   repeated string contentUrlList = 19;
   repeated string poseIndicatorList = 20;
   string nodeId = 21;
-  google.protobuf.Timestamp created_at = 22;
+  string created_at = 22;
 }
 
 message V1CreateVideoResponse {
