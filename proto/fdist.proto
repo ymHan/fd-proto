@@ -11,7 +11,7 @@ service VideoService {
 }
 
 message TogglePublishedRequest {
-  int32 userId = 1;
+  string userId = 1;
   int32 videoId = 2;
   bool isPublished = 3;
 }
