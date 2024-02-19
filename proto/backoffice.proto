@@ -739,3 +739,76 @@ message ListMwcResponse {
   string message    = 2;
   repeated Mwc data = 3;
 }
+
+/********************************************************************************
+ app Versioning
+*********************************************************************************/
+service AppVersionService {
+  rpc ListVersion(google.protobuf.Empty) returns (ListVersionResponse) {}
+  rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {}
+  rpc CreateVersion(AppVersionCreateRequest) returns (AppVersionCreateResponse) {}
+  rpc UpdateVersion(AppVersionUpdateRequest) returns (AppVersionUpdateResponse) {}
+}
+
+message ListVersionResponse {
+  string result = 1;
+  string status = 2;
+  string message = 3;
+  repeated Data data = 4;
+  message Data {
+    int32 id = 1;
+    string appName = 2;
+    string version = 3;
+    string description = 4;
+    string platform = 5;
+    string information = 6;
+  }
+}
+
+message GetVersionResponse {
+  string result = 1;
+  string status = 2;
+  string message = 3;
+  message Data {
+    int32 id = 1;
+    string appName = 2;
+    string version = 3;
+    string description = 4;
+    string platform = 5;
+    string information = 6;
+  }
+  Data data = 4;
+}
+
+message GetVersionRequest {
+  int32 id = 1;
+}
+
+message AppVersionUpdateRequest {
+  int32 id = 1;
+  string appName = 2;
+  string version = 3;
+  string description = 4;
+  string platform = 5;
+  string information = 6;
+}
+
+message AppVersionUpdateResponse {
+  string result = 1;
+  string status = 2;
+  string message = 3;
+}
+
+message AppVersionCreateRequest {
+  string appName = 1;
+  string version = 2;
+  string description = 3;
+  string platform = 4;
+  string information = 5;
+}
+
+message AppVersionCreateResponse {
+  string result = 1;
+  string status = 2;
+  string message = 3;
+}
