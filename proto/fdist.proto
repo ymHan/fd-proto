@@ -392,7 +392,7 @@ service MwcService {
 }
 
 message UpdateVideoMetaInfoRequest {
-  int32 userId = 1;
+  string userEmail = 1;
   int32 videoId = 2;
   string title = 3;
   string subTitle = 4;
