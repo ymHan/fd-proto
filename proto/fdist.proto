@@ -55,6 +55,55 @@ service FDistService {
   rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
   rpc GetLikeCheck(GetLikeCheckRequest) returns (GetLikeCheckResponse) {} // 좋아요 체크
   rpc ReportVideo(ReportVideoRequest) returns (ReportVideoResponse) {} // 비디오 신고
+
+  rpc MyVideoList(MyVideoListRequest) returns (MyVideoListResponse) {} // 내 비디오 리스트 가져오기
+}
+
+message MyVideoListResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 id = 1;
+    string email = 2;
+    string title = 3;
+    string subTitle = 4;
+    string description = 5;
+    string ownerName = 6;
+    string ownerNickName = 7;
+    string ownerChannelName = 8;
+    string ownerProfileIconUrl = 9;
+    int32 viewCount = 10;
+    int32 reportCount = 11;
+    int32 likesCount = 12;
+    string duration = 13;
+    string category = 14;
+    string categorySub = 15;
+    string categorySubCode = 16;
+    string recordType = 17;
+    repeated string contentUrlList = 18;
+    repeated string poseIndicatorList = 19;
+    string nodeId = 20;
+    string created_at = 21;
+    string updated_at = 22;
+    string thumbnailUrl = 23;
+  }
+  repeated DATA data = 4;
+  message Meta {
+    int32 page = 1;
+    int32 limit = 2;
+    int32 totalCount = 3;
+    int32 lastPage = 4;
+  }
+  Meta meta = 5;
+}
+
+message MyVideoListRequest {
+  string userEmail = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string sort = 4;
+  string order = 5;
 }
 
 message GetLikeCheckResponse {
@@ -333,62 +382,21 @@ message ContentItem {
   string streamingUrl = 8;
 }
 
-service MyVideoService {
-  rpc getMyVideoList(MyVideoListRequest) returns (MyVideoListResponse) {} // 내 비디오 리스트 가져오기
-  //rpc getMyVideoById(MyVideoByIdRequest) returns (MyVideoByIdResponse) {} // 내 비디오 아이디로 비디오 가져오기
-  //rpc getMyVideoExists(MyVideoExistsRequest) returns (MyVideoExistsResponse) {} // 내 비디오 존재 여부 확인
-  //rpc addMyVideo(AddMyVideoRequest) returns (AddMyVideoResponse) {} // 내 비디오 추가
-  //rpc updateMyVideo(UpdateMyVideoRequest) returns (UpdateMyVideoResponse) {} // 내 비디오 업데이트
-}
-
-message MyVideoListRequest {
-  int32 userId = 1;
-  int32 page = 2;
-  int32 limit = 3;
-}
-
-message MyVideoListResponse {
-  string result = 1;
-  int32 status = 2;
-  string message = 3;
-  message DATA {
-    int32 id = 1;
-    string email = 2;
-    string title = 3;
-    string subTitle = 4;
-    string description = 5;
-    string ownerName = 6;
-    string ownerNickName = 7;
-    string ownerChannelName = 8;
-    string ownerProfileIconUrl = 9;
-    int32 viewCount = 10;
-    int32 reportCount = 11;
-    int32 likesCount = 12;
-    string duration = 13;
-    string category = 14;
-    string categorySub  = 15;
-    string categorySubCode = 16;
-    string recordType = 17;
-    repeated string contentUrlList = 18;
-    repeated string poseIndicatorList = 19;
-    string nodeId = 20;
-    string created_at = 21;
-    string updated_at = 22;
-    string thumbnailUrl = 23;
-  }
-  message Meta {
-    int32 total = 1;
-    int32 page = 2;
-    int32 lastPage = 3;
-  }
-  Meta meta = 4;
-  repeated DATA data = 5;
-}
-
 service MwcService {
   rpc AddMwc(AddMwcRequest) returns (AddMwcResponse) {} // MWC 추가
   rpc ExistsMwc(ExistsMwcRequest) returns (ExistsMwcResponse) {} // MWC 존재 여부 확인
   rpc UpdateVideoMetaInfo(UpdateVideoMetaInfoRequest) returns (UpdateVideoMetaInfoResponse) {} // 비디오 메타 정보 업데이트
+  rpc ExistsVideo(ExistsVideoRequest) returns (ExistsVideoResponse) {} // 비디오 존재 여부 확인
+}
+
+message ExistsVideoRequest {
+  string userEmail = 1;
+}
+
+message ExistsVideoResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
 }
 
 message UpdateVideoMetaInfoRequest {
