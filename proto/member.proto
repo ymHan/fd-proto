@@ -228,20 +228,13 @@ message VerifyEmailResponse {
 }
 
 message LeaveMemberRequest {
-  string email = 1;
+  int32 id = 1;
 }
 
 message LeaveMemberResponse {
   string result         = 1;
   int32 status          = 2;
   string message        = 3;
-  message DATA {
-    oneof data{
-      bool result   = 1;
-      string error  = 2;
-    }
-  }
-  repeated DATA data    = 4;
 }
 
 message User {
