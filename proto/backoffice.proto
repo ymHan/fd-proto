@@ -748,6 +748,8 @@ service AppVersionService {
   rpc GetVersion(google.protobuf.Empty) returns (GetVersionResponse) {}
   rpc CreateVersion(AppVersionCreateRequest) returns (AppVersionCreateResponse) {}
   rpc UpdateVersion(AppVersionUpdateRequest) returns (AppVersionUpdateResponse) {}
+  rpc GetAndroidVersion(google.protobuf.Empty) returns (GetVersionResponse) {}
+  rpc GetIosVersion(google.protobuf.Empty) returns (GetVersionResponse) {}
 }
 
 message ListVersionResponse {
