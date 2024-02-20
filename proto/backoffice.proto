@@ -752,7 +752,7 @@ service AppVersionService {
 
 message ListVersionResponse {
   string result = 1;
-  string status = 2;
+  int32 status = 2;
   string message = 3;
   repeated Data data = 4;
   message Data {
@@ -767,7 +767,7 @@ message ListVersionResponse {
 
 message GetVersionResponse {
   string result = 1;
-  string status = 2;
+  int32 status = 2;
   string message = 3;
   message Data {
     int32 id = 1;
@@ -795,7 +795,7 @@ message AppVersionUpdateRequest {
 
 message AppVersionUpdateResponse {
   string result = 1;
-  string status = 2;
+  int32 status = 2;
   string message = 3;
 }
 
@@ -809,6 +809,6 @@ message AppVersionCreateRequest {
 
 message AppVersionCreateResponse {
   string result = 1;
-  string status = 2;
+  int32 status = 2;
   string message = 3;
 }
