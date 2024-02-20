@@ -745,7 +745,7 @@ message ListMwcResponse {
 *********************************************************************************/
 service AppVersionService {
   rpc ListVersion(google.protobuf.Empty) returns (ListVersionResponse) {}
-  rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {}
+  rpc GetVersion(google.protobuf.Empty) returns (GetVersionResponse) {}
   rpc CreateVersion(AppVersionCreateRequest) returns (AppVersionCreateResponse) {}
   rpc UpdateVersion(AppVersionUpdateRequest) returns (AppVersionUpdateResponse) {}
 }
@@ -761,7 +761,7 @@ message ListVersionResponse {
     string version = 3;
     string description = 4;
     string platform = 5;
-    string information = 6;
+    string createAt = 6;
   }
 }
 
@@ -775,7 +775,7 @@ message GetVersionResponse {
     string version = 3;
     string description = 4;
     string platform = 5;
-    string information = 6;
+    string createdAt = 6;
   }
   Data data = 4;
 }
