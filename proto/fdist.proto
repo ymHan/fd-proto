@@ -291,6 +291,7 @@ message IdVideo {
   string created_at = 21;
   string updated_at = 22;
   string thumbnailUrl = 23;
+  string isPublished = 24;
 }
 
 message Videos {
