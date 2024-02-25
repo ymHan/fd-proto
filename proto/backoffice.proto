@@ -711,7 +711,8 @@ message GetSubCategoryReq {
  MWC 용
 *********************************************************************************/
 service  MwcService {
-  rpc ListMwc(ListMwcRequest) returns (ListMwcResponse) {}
+  rpc ListMwc(google.protobuf.Empty) returns (ListMwcResponse) {}
+  rpc ListMwc2(ListMwcRequest) returns (ListMwcResponse) {}
   rpc GetMwc(GetMwcRequest) returns (GetMwcResponse) {}
   rpc FileDownload(FileDownloadRequest) returns (FileDownloadResponse) {}
 }
