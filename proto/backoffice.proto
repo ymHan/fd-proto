@@ -714,19 +714,21 @@ service  MwcService {
   rpc ListMwc(google.protobuf.Empty) returns (ListMwcResponse) {}
   rpc ListMwc2(ListMwcRequest) returns (ListMwcResponse) {}
   rpc GetMwc(GetMwcRequest) returns (GetMwcResponse) {}
-  rpc FileDownload(FileDownloadRequest) returns (FileDownloadResponse) {}
+  rpc AddHtml(AddHtmlRequest) returns (AddHtmlResponse) {}
 }
 
 message ListMwcRequest {
   string path = 1;
 }
 
-message FileDownloadRequest {
+message AddHtmlRequest {
   string filename = 1;
 }
 
-message FileDownloadResponse {
-  string downloadUrl = 1;
+message AddHtmlResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
 }
 
 message GetMwcRequest {
