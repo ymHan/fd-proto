@@ -712,9 +712,10 @@ message GetSubCategoryReq {
 *********************************************************************************/
 service  MwcService {
   rpc ListMwc(google.protobuf.Empty) returns (ListMwcResponse) {}
-  rpc ListMwc2(ListMwcRequest) returns (ListMwcResponse) {}
+  rpc ListMwcPath(ListMwcRequest) returns (ListMwcResponse) {}
   rpc GetMwc(GetMwcRequest) returns (GetMwcResponse) {}
   rpc AddHtml(AddHtmlRequest) returns (AddHtmlResponse) {}
+
 }
 
 message ListMwcRequest {
