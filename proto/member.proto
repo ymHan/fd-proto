@@ -33,6 +33,8 @@ service MemberService {
   rpc UpdatePushReceive(UpdatePushReceiveRequest) returns (UpdatePushReceiveResponse) {} // 푸시 수신 여부 변경
   rpc UpdateEmailReceive(UpdateEmailReceiveRequest) returns (UpdateEmailReceiveResponse) {} // 이메일 수신 여부 변경
   rpc UpdateNickname(UpdateNicknameRequest) returns (UpdateNicknameResponse) {} // 닉네임 변경
+
+  rpc Social(SocialRequest) returns (SocialResponse) {} // 소셜로그인
 }
 message UpdateEmailReceiveRequest {
   int32 id = 1;
@@ -392,4 +394,16 @@ message ValidateResponse {
   repeated ValidateResult data  = 4;
 }
 
+message SocialRequest {
+  string email        = 1;
+  string name         = 2;
+  string provider     = 3;
+  string providerId   = 4;
+}
 
+message SocialResponse {
+  int32 status          = 1;
+  string message        = 2;
+  string token          = 3;
+  repeated string error = 4;
+}
