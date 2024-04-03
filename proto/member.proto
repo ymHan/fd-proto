@@ -372,7 +372,8 @@ message SignInResponse {
   string result               = 1;
   int32 status                = 2;
   string message              = 3;
-  repeated SignInResult data  = 4;
+  string signType             = 4;
+  repeated SignInResult data  = 5;
 }
 
 message ValidateRequest {
