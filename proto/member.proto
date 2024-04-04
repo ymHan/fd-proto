@@ -364,7 +364,8 @@ message SignInResult {
     bool pushreceive  = 5;
     bool emailreceive = 6;
     string token      = 7;
-    string error      = 8;
+    string signType   = 8;
+    string error      = 9;
   }
 }
 
@@ -372,8 +373,7 @@ message SignInResponse {
   string result               = 1;
   int32 status                = 2;
   string message              = 3;
-  string signType             = 4;
-  repeated SignInResult data  = 5;
+  repeated SignInResult data  = 4;
 }
 
 message ValidateRequest {
