@@ -294,7 +294,7 @@ message IdVideo {
   string updated_at = 22;
   string thumbnailUrl = 23;
   string isPublished = 24;
-  repeated string channelList = 5;
+  repeated string channelList = 25;
 }
 
 message Videos {
