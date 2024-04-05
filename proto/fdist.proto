@@ -103,6 +103,7 @@ message MyVideoListResponse {
     string updated_at = 22;
     string thumbnailUrl = 23;
     string isPublished = 24;
+    repeated string channelList = 25;
   }
   repeated DATA data = 4;
   message Meta {
@@ -171,6 +172,7 @@ message GetVideoRecordTypeResponse {
     string created_at                 = 21;
     string updated_at                 = 22;
     string thumbnailUrl               = 23;
+    repeated string channelList       = 24;
   }
   repeated DATA data                        = 4;
   message Meta {
@@ -292,6 +294,7 @@ message IdVideo {
   string updated_at = 22;
   string thumbnailUrl = 23;
   string isPublished = 24;
+  repeated string channelList = 5;
 }
 
 message Videos {
@@ -318,6 +321,7 @@ message Videos {
   string created_at = 21;
   string updated_at = 22;
   string thumbnailUrl = 23;
+  repeated string channelList = 24;
 }
 
 message GetVideoByIdResponse {
@@ -462,6 +466,7 @@ message UpdateVideoMetaInfoResponse {
     string created_at = 21;
     string updated_at = 22;
     string thumbnailUrl = 23;
+    repeated string channelList = 24;
   }
   DATA data = 4;
 }
@@ -494,6 +499,7 @@ message ExistsMwcResponse {
     string created_at = 21;
     string updated_at = 22;
     string thumbnailUrl = 23;
+    repeated string channelList = 24;
   }
   DATA data = 4;
 }
@@ -536,6 +542,7 @@ message AddMwcResponse {
     string created_at = 21;
     string updated_at = 22;
     string thumbnailUrl = 23;
+    repeated string channelList = 24;
   }
   DATA data = 4;
 }
