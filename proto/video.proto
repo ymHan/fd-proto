@@ -1,15 +1,18 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
-
 package video;
 
-service myVideoService {
-  rpc RecordVideo (RecordVideoRequest) returns (RecordVideoResponse) {}
-  rpc Video(VideoRequest) returns (stream VideoResponse) {}
+service FDistVideoService {
+  rpc shootingVideo (addTmpVideoRequest) returns (addTmpVideoResponse) {} //촬영시작
 }
 
-message RecordVideoRequest {
-  string videoName = 1;
+message addTmpVideoRequest {
+  string tempId     = 1;
+  string ownerEmail = 2;
+  string nodeId     = 3;
+}
+
+message addTmpVideoResponse {
+  string videoId = 1;
+  string tempId  = 2;
 }
