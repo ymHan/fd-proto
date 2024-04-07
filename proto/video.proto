@@ -13,6 +13,6 @@ message addTmpVideoRequest {
 }
 
 message addTmpVideoResponse {
-  string videoId = 1;
+  string id = 1;
   string tempId  = 2;
 }
