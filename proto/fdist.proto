@@ -8,7 +8,20 @@ import "google/protobuf/timestamp.proto";
 service VideoService {
   rpc TogglePublished(TogglePublishedRequest) returns (TogglePublishedResponse) {} // 비디오 공개 여부 토글
   rpc DeleteVideo(DeleteVideoRequest) returns (DeleteVideoResponse) {} // 비디오 삭제
+  rpc shootingVideo (addTmpVideoRequest) returns (addTmpVideoResponse) {} //촬영시작
 }
+
+message addTmpVideoRequest {
+  string tempId     = 1;
+  string ownerEmail = 2;
+  string nodeId     = 3;
+}
+
+message addTmpVideoResponse {
+  int32 id = 1;
+  string tempId  = 2;
+}
+
 
 message TogglePublishedRequest {
   string userId = 1;
