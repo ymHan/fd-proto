@@ -9,7 +9,7 @@ service FDistVideoService {
 
 message VideoUploadRequest {
   string          tempId = 1;
-  string          title = 2;
+/*  string          title = 2;
   string          sub_title = 3;
   string          description = 4;
   string          recordType = 5;
@@ -19,7 +19,7 @@ message VideoUploadRequest {
   repeated string channelList = 9;
   repeated string thumbnail = 10;
   string          duration = 11;
-  bool            isStatus = 12;
+  bool            isStatus = 12;*/
 }
 
 message VideoUploadResponse {
