@@ -13,7 +13,9 @@ service VideoService {
 }
 
 message VideoUploadRequest {
-  string          tempId = 1;
+  string tempId = 1;
+  string recordType = 2;
+  repeated string contents = 3;
 }
 
 message VideoUploadResponse {
