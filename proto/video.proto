@@ -4,6 +4,27 @@ package video;
 
 service FDistVideoService {
   rpc shootingVideo (addTmpVideoRequest) returns (addTmpVideoResponse) {} //촬영시작
+  rpc VideoUpload (VideoUploadRequest) returns (VideoUploadResponse) {} //비디오 업로드
+}
+
+message VideoUploadRequest {
+  string          tempId = 1;
+  string          title = 2;
+  string          sub_title = 3;
+  string          description = 4;
+  string          recordType = 5;
+  string          url = 6;
+  repeated string video_files = 7;
+  repeated string meta = 8;
+  repeated string channelList = 9;
+  repeated string thumbnail = 10;
+  string          duration = 11;
+  bool            isStatus = 12;
+}
+
+message VideoUploadResponse {
+  int32 id = 1;
+  string tempId = 2;
 }
 
 message addTmpVideoRequest {
