@@ -20,8 +20,10 @@ message VideoUploadRequest {
 }
 
 message VideoUploadResponse {
-  int32 id = 1;
-  string tempId = 2;
+  int32 videoId = 1;
+  int32 userId = 2;
+  string tempId = 3;
+  string recordType = 4;
 }
 
 message addTmpVideoRequest {
