@@ -32,6 +32,8 @@ message VideoUploadRequest {
   string category = 2;
   string recordType = 3;
   repeated string contents = 4;
+  string duration = 5;
+  repeated string thumbnail = 6;
 }
 
 message VideoUploadResponse {
