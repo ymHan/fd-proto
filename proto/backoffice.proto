@@ -845,14 +845,12 @@ message ListShortSxResponse {
   string result = 1;
   int32 status = 2;
   string message = 3;
-  repeated Data data = 4;
+  repeated Data shortsx = 4;
   message Data {
     int32 id = 1;
     string file_name = 2;
     string file_path = 3;
     string return_api = 4;
-    string createdat = 5 ;
-    int32 updatedat = 6;
   }
 }
 
