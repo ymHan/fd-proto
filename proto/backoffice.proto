@@ -848,9 +848,9 @@ message ListShortSxResponse {
   repeated Data shortsx = 4;
   message Data {
     int32 id = 1;
-    string file_name = 2;
-    string file_path = 3;
-    string return_api = 4;
+    string filename = 2;
+    string filepath = 3;
+    string returnapi = 4;
   }
 }
 
