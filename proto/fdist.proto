@@ -73,8 +73,7 @@ message TogglePublishedResponse {
 }
 
 message DeleteVideoRequest {
-  string userId = 1;
-  int32 videoId = 2;
+  int32 videoId = 1;
 }
 
 message DeleteVideoResponse {
