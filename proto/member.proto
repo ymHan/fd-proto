@@ -36,7 +36,84 @@ service MemberService {
 
   rpc SocialSignIn(SocialSignInRequest) returns (SignInResponse) {} // 소셜로그인
   rpc UpdateDeviceToken(UpdateDeviceTokenRequest) returns (UpdateDeviceTokenResponse) {} // 회원 push token 업데이트
+
+  rpc MyTagCreate(MyTagCreateRequest) returns (MyTagCreateResponse) {} // 내 태그 생성
+  rpc MyTagDelete(MyTagDeleteRequest) returns (MyTagDeleteResponse) {} // 내 태그 삭제
+  rpc MyTagUpdate(MyTagUpdateRequest) returns (MyTagUpdateResponse) {} // 내 태그 수정
+  rpc MyTagList(MyTagListRequest) returns (MyTagListResponse) {} // 내 태그 리스트 조회
 }
+
+message MyTagListRequest {
+  int32 userId = 1;
+}
+
+message MyTagListResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      int32 id = 1;
+      string tag = 2;
+      string error = 3;
+    }
+  }
+  repeated DATA data = 4;
+}
+
+message MyTagUpdateResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data = 4;
+}
+
+message MyTagUpdateRequest {
+  int32 id = 1;
+  string tag = 2;
+}
+
+message MyTagDeleteRequest {
+  int32 id = 1;
+}
+
+message MyTagDeleteResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data = 4;
+}
+
+message MyTagCreateRequest {
+  int32 userId = 1;
+  string tag = 2;
+}
+
+message MyTagCreateResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    oneof data{
+      bool result = 1;
+      string error = 2;
+    }
+  }
+  repeated DATA data = 4;
+}
+
 message UpdateEmailReceiveRequest {
   int32 id = 1;
   bool emailreceive = 2;

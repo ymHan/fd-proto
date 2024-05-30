@@ -603,4 +603,77 @@ message AddMwcResponse {
   DATA data = 4;
 }
 
+service TagService {
+  rpc VideoTagCreate(VideoTagCreateRequest) returns (VideoTagCreateResponse) {} // 비디오 태그 생성
+  rpc VideoTagDelete(VideoTagDeleteRequest) returns (VideoTagDeleteResponse) {} // 비디오 태그 삭제
+  rpc VideoTagUpdate(VideoTagUpdateRequest) returns (VideoTagUpdateResponse) {} // 비디오 태그 업데이트
+  rpc VideoTagListByVideoId(VideoTagListByVideoIdRequest) returns (VideoTagListByVideoIdResponse) {} // 비디오 아이디로 비디오 태그 리스트 가져오기
+}
+
+message VideoTagListByVideoIdRequest {
+  int32 videoId = 1;
+}
+
+message VideoTagListByVideoIdResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 id = 1;
+    int32 videoId = 2;
+    string tag = 3;
+    string created_at = 4;
+    string updated_at = 5;
+  }
+  repeated DATA data = 4;
+}
+
+message VideoTagCreateRequest {
+  int32 videoId = 1;
+  string tag = 2;
+}
+
+message VideoTagCreateResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 id = 1;
+    int32 videoId = 2;
+    string tag = 3;
+    string created_at = 4;
+    string updated_at = 5;
+  }
+  DATA data = 4;
+}
+
+message VideoTagDeleteRequest {
+  int32 id = 1;
+}
+
+message VideoTagDeleteResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message VideoTagUpdateRequest {
+  int32 id = 1;
+  string tag = 2;
+}
+
+message VideoTagUpdateResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 id = 1;
+    int32 videoId = 2;
+    string tag = 3;
+    string created_at = 4;
+    string updated_at = 5;
+  }
+  DATA data = 4;
+}
+
 
