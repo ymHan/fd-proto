@@ -1,15 +1,39 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
-
 package video;
 
-service myVideoService {
-  rpc RecordVideo (RecordVideoRequest) returns (RecordVideoResponse) {}
-  rpc Video(VideoRequest) returns (stream VideoResponse) {}
+service FDistVideoService {
+  rpc shootingVideo (addTmpVideoRequest) returns (addTmpVideoResponse) {} //촬영시작
+  rpc VideoUpload (VideoUploadRequest) returns (VideoUploadResponse) {} //비디오 업로드
 }
 
-message RecordVideoRequest {
-  string videoName = 1;
+message VideoUploadRequest {
+  string          tempId = 1;
+/*  string          title = 2;
+  string          sub_title = 3;
+  string          description = 4;
+  string          recordType = 5;
+  string          url = 6;
+  repeated string video_files = 7;
+  repeated string meta = 8;
+  repeated string channelList = 9;
+  repeated string thumbnail = 10;
+  string          duration = 11;
+  bool            isStatus = 12;*/
+}
+
+message VideoUploadResponse {
+  int32 id = 1;
+  string tempId = 2;
+}
+
+message addTmpVideoRequest {
+  string tempId     = 1;
+  string ownerEmail = 2;
+  string nodeId     = 3;
+}
+
+message addTmpVideoResponse {
+  int32 id = 1;
+  string tempId  = 2;
 }

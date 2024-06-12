@@ -833,6 +833,34 @@ message AppVersionCreateResponse {
   string message = 3;
 }
 
+service Backoffice_ShortsX_Service {
+  rpc ListShortSx(google.protobuf.Empty) returns (ListShortSxResponse) {}
+  rpc DeleteShortSx(DeleteShortSxRequest) returns (DeleteShortSxResponse) {}
+}
+
+message ListShortSxResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  repeated Data data = 4;
+  message Data {
+    int32 id = 1;
+    string filename = 2;
+    string filepath = 3;
+    string returnapi = 4;
+  }
+}
+
+message DeleteShortSxRequest {
+  int32 id = 1;
+}
+
+message DeleteShortSxResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
 /********************************************************************************
  Auth 서비스
 *********************************************************************************/
@@ -1234,4 +1262,3 @@ message GetReportsResponse {
   string message                = 3;
   Paging meta                   = 4;
   repeated google.protobuf.Struct data   = 5;
-}

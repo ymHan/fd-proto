@@ -8,7 +8,54 @@ import "google/protobuf/timestamp.proto";
 service VideoService {
   rpc TogglePublished(TogglePublishedRequest) returns (TogglePublishedResponse) {} // 비디오 공개 여부 토글
   rpc DeleteVideo(DeleteVideoRequest) returns (DeleteVideoResponse) {} // 비디오 삭제
+  rpc shootingVideo (addTmpVideoRequest) returns (addTmpVideoResponse) {} //촬영시작
+  rpc VideoDone(VideoUploadRequest) returns (VideoUploadResponse) {} // 비디오 업로드
+  rpc VideoMake(VideoMakeRequest) returns (VideoMakeResponse) {} // 비디오 생성
+  rpc IvpVideo(GetVideoByIdRequest) returns (IvpVideoResponse) {}
+  rpc IvpVideoP(GetVideoByIdRequest) returns (IvpVideoResponse) {}
 }
+
+message VideoMakeRequest {
+  int32 videoId = 1;
+  int32 userId = 2;
+  string tempId = 3;
+  string recordType = 4;
+}
+
+message VideoMakeResponse {
+  int32 videoId = 1;
+  int32 userId = 2;
+  string tempId = 3;
+  string recordType = 4;
+}
+
+message VideoUploadRequest {
+  string tempId = 1;
+  string category = 2;
+  string recordType = 3;
+  repeated string contents = 4;
+  string duration = 5;
+  repeated string thumbnail = 6;
+}
+
+message VideoUploadResponse {
+  int32 videoId = 1;
+  int32 userId = 2;
+  string tempId = 3;
+  string recordType = 4;
+}
+
+message addTmpVideoRequest {
+  string tempId     = 1;
+  string ownerEmail = 2;
+  string nodeId     = 3;
+}
+
+message addTmpVideoResponse {
+  int32 id = 1;
+  string tempId  = 2;
+}
+
 
 message TogglePublishedRequest {
   string userId = 1;
@@ -27,8 +74,7 @@ message TogglePublishedResponse {
 }
 
 message DeleteVideoRequest {
-  string userId = 1;
-  int32 videoId = 2;
+  int32 videoId = 1;
 }
 
 message DeleteVideoResponse {
@@ -53,7 +99,7 @@ service FDistService {
   rpc GetVideoRecordType(GetVideoRecordTypeRequest) returns (GetVideoRecordTypeResponse) {} // 비디오 녹화 타입 가져오기
 
   rpc GetCategory(google.protobuf.Empty) returns (GetCategoryResponse) {} // 카테고리 가져오기
-  rpc GetCategorySub(google.protobuf.Empty) returns (GetCategorySubResponse) {} // 카테고리 서브 가져오기
+  rpc GetCategorySub(GetCateorySubRequest) returns (GetCategorySubResponse) {} // 카테고리 서브 가져오기
   rpc GetRecordType(google.protobuf.Empty) returns (GetRecordTypeResponse) {} // 녹화 타입 가져오기
 
   rpc ToggleLike(ToggleLikeRequest) returns (ToggleLikeResponse) {} // 좋아요 토글
@@ -62,6 +108,13 @@ service FDistService {
 
   rpc MyVideoList(MyVideoListRequest) returns (MyVideoListResponse) {} // 내 비디오 리스트 가져오기
   rpc MyVideoExists(MyVideoExistsRequest) returns (MyVideoExistsResponse) {} // 내 비디오 존재 여부 확인
+
+}
+
+message IvpVideoResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
 }
 
 message MyVideoExistsRequest {
@@ -103,6 +156,7 @@ message MyVideoListResponse {
     string updated_at = 22;
     string thumbnailUrl = 23;
     string isPublished = 24;
+    repeated string channelList = 25;
   }
   repeated DATA data = 4;
   message Meta {
@@ -171,6 +225,7 @@ message GetVideoRecordTypeResponse {
     string created_at                 = 21;
     string updated_at                 = 22;
     string thumbnailUrl               = 23;
+    repeated string channelList       = 24;
   }
   repeated DATA data                        = 4;
   message Meta {
@@ -247,6 +302,9 @@ message ToggleLikeResponse {
   repeated DATA data = 4;
 }
 
+message GetCateorySubRequest {
+  string lang = 1;
+}
 message GetCategorySubResponse {
   string result = 1;
   int32 status = 2;
@@ -292,6 +350,7 @@ message IdVideo {
   string updated_at = 22;
   string thumbnailUrl = 23;
   string isPublished = 24;
+  repeated string channelList = 25;
 }
 
 message Videos {
@@ -318,6 +377,7 @@ message Videos {
   string created_at = 21;
   string updated_at = 22;
   string thumbnailUrl = 23;
+  repeated string channelList = 24;
 }
 
 message GetVideoByIdResponse {
@@ -462,6 +522,7 @@ message UpdateVideoMetaInfoResponse {
     string created_at = 21;
     string updated_at = 22;
     string thumbnailUrl = 23;
+    repeated string channelList = 24;
   }
   DATA data = 4;
 }
@@ -494,6 +555,7 @@ message ExistsMwcResponse {
     string created_at = 21;
     string updated_at = 22;
     string thumbnailUrl = 23;
+    repeated string channelList = 24;
   }
   DATA data = 4;
 }
@@ -536,6 +598,80 @@ message AddMwcResponse {
     string created_at = 21;
     string updated_at = 22;
     string thumbnailUrl = 23;
+    repeated string channelList = 24;
+  }
+  DATA data = 4;
+}
+
+service TagService {
+  rpc VideoTagCreate(VideoTagCreateRequest) returns (VideoTagCreateResponse) {} // 비디오 태그 생성
+  rpc VideoTagDelete(VideoTagDeleteRequest) returns (VideoTagDeleteResponse) {} // 비디오 태그 삭제
+  rpc VideoTagUpdate(VideoTagUpdateRequest) returns (VideoTagUpdateResponse) {} // 비디오 태그 업데이트
+  rpc VideoTagListByVideoId(VideoTagListByVideoIdRequest) returns (VideoTagListByVideoIdResponse) {} // 비디오 아이디로 비디오 태그 리스트 가져오기
+}
+
+message VideoTagListByVideoIdRequest {
+  int32 videoId = 1;
+}
+
+message VideoTagListByVideoIdResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 id = 1;
+    int32 videoId = 2;
+    string tag = 3;
+    string created_at = 4;
+    string updated_at = 5;
+  }
+  repeated DATA data = 4;
+}
+
+message VideoTagCreateRequest {
+  int32 videoId = 1;
+  string tag = 2;
+}
+
+message VideoTagCreateResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 id = 1;
+    int32 videoId = 2;
+    string tag = 3;
+    string created_at = 4;
+    string updated_at = 5;
+  }
+  DATA data = 4;
+}
+
+message VideoTagDeleteRequest {
+  int32 id = 1;
+}
+
+message VideoTagDeleteResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message VideoTagUpdateRequest {
+  int32 id = 1;
+  string tag = 2;
+}
+
+message VideoTagUpdateResponse {
+  string result = 1;
+  int32 status = 2;
+  string message = 3;
+  message DATA {
+    int32 id = 1;
+    int32 videoId = 2;
+    string tag = 3;
+    string created_at = 4;
+    string updated_at = 5;
   }
   DATA data = 4;
 }
