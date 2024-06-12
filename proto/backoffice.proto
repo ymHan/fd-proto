@@ -4,6 +4,7 @@ package backoffice;
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
 
 /********************************************************************************
 공통 메시지
@@ -830,4 +831,407 @@ message AppVersionCreateResponse {
   string result = 1;
   int32 status = 2;
   string message = 3;
+}
+
+/********************************************************************************
+ Auth 서비스
+*********************************************************************************/
+service AuthService {
+  rpc SignIn(SignInRequest) returns (SignInResponse) {} // admin 로그인
+}
+
+message SignInRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message SignInResponse {
+  string result               = 1;
+  int32 status                = 2;
+  string message              = 3;
+  repeated SignInResult data  = 4;
+}
+
+message SignInResult {
+  oneof data {
+    int32 id          = 1;
+    string email      = 2;
+    string name       = 3;
+    string nickname   = 4;
+    string usertype   = 5;
+    string state      = 6;
+    string token      = 7;
+    string error      = 8;
+  }
+}
+
+/********************************************************************************
+ Account 서비스
+*********************************************************************************/
+service AccountService {
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {} //멤버 정보 조회(리스트)
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {} // 멤버 정보 조회
+  rpc UpdateUser(UpdateRequest) returns (UpdateResponse) {} // 멤버 정보 업데이트
+  rpc DeleteUser(GetUserRequest) returns (UpdateResponse) {} // 멤버 탈퇴 / 삭제 등 백오피스 기능
+  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse) {} // 프로필 업데이트
+  rpc UpdateChannel(UpdateChannelRequest) returns (UpdateChannelResponse) {} // 채널 업데이트
+  rpc UpdateVideo(UserUpdateVideoRequest) returns (UserVideoResponse) {} // 비디오 업데이트
+  rpc DeleteVideo(UserDeleteVideoRequest) returns (UserVideoResponse) {} // 비디오 업데이트(삭제)
+  rpc UpdateSocial(UpdateSocialRequest) returns (UpdateSocialResponse) {} // 소셜로그인 아이디 업데이트
+}
+
+message GetUserRequest {
+  int32 id                  = 1;
+  oneof headers {
+    string authorization    = 2;
+  }
+}
+
+message GetUserResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  repeated GetUserResult data   = 4;
+}
+
+message GetUserResult {
+  int32 id                      = 1;
+  string email                  = 2;
+  string name                   = 3;
+  string nickname               = 4;
+  string usertype               = 5;
+  string state                  = 6;
+  bool isVerifiedEmail          = 7;
+  bool pushreceive              = 8;
+  bool emailreceive             = 9;
+  google.protobuf.Struct date   = 10;
+  google.protobuf.Struct channel = 11;
+  google.protobuf.Struct profile = 12;
+  repeated google.protobuf.Struct videos  = 13;
+  repeated google.protobuf.Struct socials = 14;
+  repeated google.protobuf.Struct notis   = 15;
+  oneof errors {
+    string error                          = 16;
+  }
+}
+
+message GetUsersRequest {
+  int32 page              = 1;
+  int32 limit             = 2;
+  string sort             = 3;
+  string order            = 4;
+  oneof search {
+    string keyword        = 5;
+  }
+  oneof headers {
+    string authorization  = 6;
+  }
+}
+
+message GetUsersResult {
+  int32 id                      = 1;
+  string email                  = 2;
+  string password               = 3;
+  string name                   = 4;
+  string nickname               = 5;
+  string usertype               = 6;
+  bool pushreceive              = 7;
+  bool emailreceive             = 8;
+  string state                  = 9;
+  bool isVerifiedEmail          = 10;
+  google.protobuf.Struct date   = 11;
+  google.protobuf.Struct channel = 12;
+  google.protobuf.Struct profile = 13;
+  repeated google.protobuf.Struct videos  = 14;
+  repeated google.protobuf.Struct socials = 15;
+}
+
+message GetUsersResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  Paging meta                   = 4;
+  repeated GetUsersResult data  = 5;
+}
+
+message UpdateRequest {
+  int32 id              = 1;
+  oneof body {
+    string password     = 2;
+    string name         = 3;
+    string nickname     = 4;
+    string usertype     = 5;
+    bool pushreceive    = 6;
+    bool emailreceive   = 7;
+    string state        = 8;
+    bool isVerifiedEmail = 9;
+  }
+  oneof headers {
+    string authorization  = 10;
+  }
+}
+
+message UpdateResult {
+  int32 id              = 1;
+  oneof body {
+    string password     = 2;
+    string name         = 3;
+    string nickname     = 4;
+    string usertype     = 5;
+    bool pushreceive    = 6;
+    bool emailreceive   = 7;
+    string state        = 8;
+    bool isVerifiedEmail = 9;
+  }
+}
+
+message UpdateResponse {
+  string result               = 1;
+  int32 status                = 2;
+  string message              = 3;
+  repeated UpdateResult data  = 4;
+}
+
+message UpdateProfileRequest {
+  int32 id                  = 1;
+  oneof body {
+    string gender           = 2;
+    string photo            = 3;
+  }
+  oneof headers {
+    string authorization    = 4;
+  }
+}
+
+message UpdateProfileResponse {
+  string result               = 1;
+  int32 status                = 2;
+  string message              = 3;
+  repeated UpdateProfileRequest data  = 4;
+}
+
+message UpdateChannelRequest {
+  int32 id = 1;
+  oneof body {
+    string channelName = 2;
+    string description = 3;
+    string channelUrl  = 4;
+    string link        = 5;
+    string businessEmail    = 6;
+  }
+  oneof headers {
+    string authorization    = 7;
+  }
+}
+
+message UpdateChannelResponse {
+  string result               = 1;
+  int32 status                = 2;
+  string message              = 3;
+  repeated UpdateChannelRequest data  = 4;
+}
+
+
+message UserUpdateVideoRequest {
+  oneof body {
+    int32 id                  = 1;
+    string email              = 2;
+    string title              = 3;
+    string subTitle           = 4;
+    string description        = 5;
+    string ownerName          = 6;
+    string ownerNickName      = 7;
+    string ownerChannelName   = 8;
+    string ownerProfileIconUrl = 9;
+    string thumbnailUrl       = 10;
+    int32 viewCount           = 11;
+    int32 reportCount         = 12;
+    int32 likesCount          = 13;
+    string duration           = 14;
+    string category           = 15;
+    string categorySub        = 16;
+    string categorySubCode    = 17;
+    string recordType         = 18;
+    string nodeId             = 19;
+    string createdAt          = 20;
+    bool isPublic             = 21;
+    bool isStatus             = 22;
+    bool isDeleted            = 23;
+  }
+  int32 userId                = 24;
+  oneof headers {
+    string authorization      = 25;
+  }
+}
+
+message UserVideoResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  google.protobuf.Struct data   = 4;
+}
+
+message UserDeleteVideoRequest {
+  oneof headers {
+    string authorization    = 1;
+  }
+  int32 userid              = 2;
+  int32 videoid             = 3;
+}  
+
+message UpdateSocialRequest {
+  oneof headers {
+    string authorization    = 1;
+  }
+  int32 targetId = 2;
+  int32 id = 3;
+  string providerId = 4;
+}
+
+message UpdateSocialResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  google.protobuf.Struct data   = 4;
+}
+
+/********************************************************************************
+ CommonCode 서비스
+*********************************************************************************/
+service CommonCodeService {
+  rpc GetCommonCodes(GetCommonCodesRequest) returns (CommonCodeResponse) {}    //조회(전체)
+  rpc GetCommonCode(GetCommonCodeRequest) returns (CommonCodeResponse) {}    //조회
+  rpc PutCommonCode(PutCommonCodeRequest) returns (CommonCodeResponse) {}    //추가
+  rpc DelCommonCode(GetCommonCodeRequest) returns (CommonCodeResponse) {}    //삭제
+  rpc ModCommonCode(ModCommonCodeRequest) returns (CommonCodeResponse) {}    //수정
+  rpc GetDetailCode(GetItemDetailRequest) returns (GetItemDetailResponse) {}  //itemdetail 조회
+}
+
+message GetCommonCodeRequest {
+  oneof headers {
+    string authorization  = 1;
+  }
+  string groupCode        = 2;
+  string code             = 3;
+}
+
+message GetCommonCodeResponse {
+  int32 id          = 1;
+  string groupCode  = 2;
+  string code       = 3;
+  string name       = 4;
+  bool isDeleted    = 5;
+  oneof detailObject {
+    google.protobuf.Struct detail = 6;
+  }
+}
+
+message CommonCodeResponse {
+  string result               = 1;
+  int32 status                = 2;
+  string message              = 3;
+  oneof errors {
+    string error              = 4;
+  }
+  repeated GetCommonCodeResponse data  = 5;
+}
+
+message GetCommonCodesRequest {
+  oneof headers {
+    string authorization  = 1;
+  }
+}
+
+message PutCommonCodeRequest {
+  oneof headers {
+    string authorization  = 1;
+  }
+  string groupCode  = 2;
+  string code       = 3;
+  string name       = 4;
+  oneof details {
+    int32 sort      = 5;
+    string kr       = 6;
+    string en       = 7;
+    string jp       = 8;
+    string ctkd     = 9;     
+  }
+}
+
+message ModCommonCodeRequest {
+  oneof headers {
+    string authorization  = 1;
+  }
+  string groupCode  = 2;
+  string code       = 3;
+  string newCode    = 4;
+  string newName    = 5;
+  oneof details {
+    int32 detailId  = 6;
+    int32 sort      = 7;
+    string kr       = 8;
+    string en       = 9;
+    string jp       = 10;
+    string ctkd     = 11;     
+  }
+}
+
+message GetItemDetailRequest {
+  oneof headers {
+    string authorization  = 1;
+  }
+}
+
+message GetItemDetailResponse {
+  string result               = 1;
+  int32 status                = 2;
+  string message              = 3;
+  oneof errors {
+    string error              = 4;
+  }
+  repeated GetItemDetail data  = 5;
+}
+
+message GetItemDetail {
+  string groupCode    = 1;
+  string code         = 2;
+  string name         = 3;
+  string ctkd         = 4;
+}
+
+/********************************************************************************
+ Report 서비스
+*********************************************************************************/
+service ReportService {
+  rpc GetReports(GetReportsRequest) returns (GetReportsResponse) {}    //조회(전체)
+  rpc GetReport(GetReportRequest) returns (GetReportsResponse) {}    //조회(전체)
+}
+
+message GetReportsRequest {
+  int32 page              = 1;
+  int32 limit             = 2;
+  string sort             = 3;
+  string order            = 4;
+  oneof search {
+    string type           = 5;
+    string keyword        = 6;
+  }
+  oneof headers {
+    string authorization  = 7;
+  }
+}
+
+message GetReportRequest {
+  int32 id                  = 1;
+  oneof headers {
+    string authorization    = 2;
+  }
+}
+
+message GetReportsResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  Paging meta                   = 4;
+  repeated google.protobuf.Struct data   = 5;
 }
