@@ -1262,3 +1262,4 @@ message GetReportsResponse {
   string message                = 3;
   Paging meta                   = 4;
   repeated google.protobuf.Struct data   = 5;
+}
