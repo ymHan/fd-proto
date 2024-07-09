@@ -889,7 +889,8 @@ message SignInResult {
     string usertype   = 5;
     string state      = 6;
     string token      = 7;
-    string error      = 8;
+    google.protobuf.Struct profile   = 8;
+    string error      = 9;
   }
 }
 
@@ -1278,6 +1279,49 @@ message GetDashBoardAllRequest {
 }
 
 message GetDashBoardAllResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  repeated google.protobuf.Struct data   = 4;
+}
+
+/********************************************************************************
+ B/O 비디오 서비스
+*********************************************************************************/
+service BOVideoService {
+  rpc GetBOVideos(GetBOVideosRequest) returns (GetBOVideosResponse) {} //비디오 리스트 조회
+  rpc GetBOVideo(GetBOVideoRequest) returns (GetBOVideoResponse) {} // 비디오 조회
+}
+
+message GetBOVideosRequest {
+  int32 page              = 1;
+  int32 limit             = 2;
+  string sort             = 3;
+  string order            = 4;
+  oneof search {
+    string keyword        = 5;
+  }
+  oneof headers {
+    string authorization  = 6;
+  }
+}
+
+message GetBOVideosResponse {
+  string result                 = 1;
+  int32 status                  = 2;
+  string message                = 3;
+  Paging meta                   = 4;
+  repeated google.protobuf.Struct data   = 5;
+}
+
+message GetBOVideoRequest {
+  int32 id                  = 1;
+  oneof headers {
+    string authorization    = 2;
+  }
+}
+
+message GetBOVideoResponse {
   string result                 = 1;
   int32 status                  = 2;
   string message                = 3;
